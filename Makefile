@@ -1,4 +1,4 @@
-AC = bin/arduino-cli
+AC = arduino-cli
 AFLAGS = --fqbn
 BOARD = arduino:avr:uno
 
