@@ -4,5 +4,5 @@ BOARD = arduino:avr:uno
 
 all: compile
 
-compile: main/main.ino
-	$(AC) compile $(AFLAGS) $(BOARD) main
+compile: src/src.ino
+	$(AC) compile $(AFLAGS) $(BOARD) src
