@@ -1,0 +1,32 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "~/.arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino",
+                "~/.arduino15/packages/arduino/hardware/avr/1.8.6/variants/standard",
+                "~/.arduino15/packages/arduino/hardware/avr/1.8.6/libraries/EEPROM/src",
+                "~/.arduino15/packages/arduino/hardware/arduino/avr/libraries/HID/src",
+                "~/.arduino15/packages/arduino/hardware/arduino/avr/libraries/SoftwareSerial/src",
+                "~/.arduino15/packages/arduino/hardware/arduino/avr/libraries/SPI/src",
+                "~/.arduino15/packages/arduino/hardware/arduino/avr/libraries/Wire/src",
+                "~/.arduino15/packages/arduino/hardware/arduino/avr/libraries/SPI/src",
+                "${workspaceRoot}"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE",
+                "F_CPU=16000000L",
+                "ARDUINO=10805",
+                "ARDUINO_AVR_UNO",
+                "ARDUINO_ARCH_AVR"
+            ],
+            "compilerPath": "/usr/bin/avr-gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}
