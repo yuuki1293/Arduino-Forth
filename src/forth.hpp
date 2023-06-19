@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include "forth_def.hpp"
+#include "global.hpp"
 
 void next();
 
