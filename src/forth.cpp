@@ -1,6 +1,6 @@
 #include "forth.hpp"
 
-[[noreturn]] int main()
+int main()
 {
     i_init();
 }
