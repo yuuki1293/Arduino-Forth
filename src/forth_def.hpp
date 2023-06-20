@@ -1,10 +1,12 @@
 #ifndef FORTH_DEF_HPP
 #define FORTH_DEF_HPP
 
+#include <stdlib.h>
+
 union body
 {
     body *xt;
-    int8_t value;
+    size_t value;
     void (*impl)();
 };
 
