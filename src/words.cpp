@@ -1,5 +1,7 @@
 #include "words.hpp"
 
+static void (**program_stub)();
+
 static void push(int32_t value)
 {
     stack++;
@@ -17,7 +19,7 @@ static int32_t pop()
 native1(init)
 {
     stack = stack_start;
-    pc = w_stub.xt;
+    pc = program_stub;
     state = 0;
     here = dict_mem;
     next();
