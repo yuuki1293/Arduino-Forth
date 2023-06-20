@@ -44,4 +44,7 @@ native1(swap)
 }
 #define _lw ref(swap)
 
+colon1(main_stub)
+(void (*)())1, (void (*)())2, *w_swap.xt};
+
 word *last_word = _lw;
