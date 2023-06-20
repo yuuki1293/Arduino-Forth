@@ -10,7 +10,8 @@
     word w_##label = {_lw,         \
                       name,        \
                       flag,        \
-                      &i_##label}
+                      &i_##label}; \
+    [[noreturn]] void label()
 
 #define native2(name, label) native3(name, label, 0)
 

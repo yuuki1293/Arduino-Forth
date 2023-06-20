@@ -14,13 +14,11 @@ static int32_t pop()
     return value;
 }
 
-[[noreturn]] void drop()
+native1(drop)
 {
     stack--;
     next();
 }
-
-native1(drop);
 #define _lw ref(drop)
 
-word* last_word = _lw;
+word *last_word = _lw;
