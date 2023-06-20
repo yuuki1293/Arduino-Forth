@@ -1,6 +1,6 @@
 #include "next.hpp"
 
-void next()
+[[noreturn]] void next()
 {
     w = *pc;
     pc++;
