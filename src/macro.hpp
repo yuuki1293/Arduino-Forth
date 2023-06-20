@@ -27,7 +27,7 @@
 #define native1(label) native2(#label, label)
 
 #define colon3(name, label, flag) \
-    body a_##label[];             \
+    extern body a_##label[];      \
     word w_##label = {_lw,        \
                       name,       \
                       flag,       \
