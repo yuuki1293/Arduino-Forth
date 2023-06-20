@@ -7,6 +7,6 @@ struct word
     char *name;
     bool flag;
     void (**xt)();
-} WORD;
+};
 
 #endif // FORTH_DEF_HPP
