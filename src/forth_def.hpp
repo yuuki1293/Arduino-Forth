@@ -5,7 +5,7 @@
 
 union body
 {
-    body *xt;
+    body *inner;
     size_t value;
     void (*impl)();
 };
