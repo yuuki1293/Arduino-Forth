@@ -11,6 +11,8 @@ static int32_t pop();
 
 [[noreturn]] void drop();
 
+[[noreturn]] void swap();
+
 extern word *last_word;
 
 #endif // WORDS_HPP
