@@ -14,6 +14,6 @@ extern int32_t user_mem[1024];
 extern word dict_mem[256];
 
 extern uint32_t state;
-extern void* here;
+extern word* here;
 
 #endif //GLOBAL_HPP

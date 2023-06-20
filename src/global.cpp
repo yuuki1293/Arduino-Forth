@@ -10,4 +10,4 @@ int32_t user_mem[1024];
 word dict_mem[256];
 
 uint32_t state = 0;
-void* here = dict_mem;
+word* here = dict_mem;
