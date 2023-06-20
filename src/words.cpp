@@ -30,5 +30,6 @@ native1(swap)
     push(b);
     next();
 }
+#define _lw ref(swap)
 
 word *last_word = _lw;
