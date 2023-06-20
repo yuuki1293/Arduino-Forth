@@ -1,6 +1,6 @@
 #include "words.hpp"
 
-static body *program_stub = &w_main_stub.xt;
+static body *program_stub = w_main_stub.xt.inner;
 
 static void push(int32_t value)
 {
@@ -44,8 +44,8 @@ native1(init)
 native1(docol)
 {
     rpush(pc);
-    w++;
-    pc = w;
+    w.inner++;
+    pc = w.inner;
     next();
 }
 #define _lw ref(docol)
