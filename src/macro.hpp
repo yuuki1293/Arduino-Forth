@@ -5,6 +5,16 @@
 
 #define ref(f) &w_##f
 
+#define impl(f)        \
+    {                  \
+        .impl = &i_##f \
+    }
+
+#define lit(a)     \
+    {              \
+        .value = a \
+    }
+
 #define native3(name, label, flag) \
     word w_##label = {_lw,         \
                       name,        \
@@ -17,12 +27,12 @@
 #define native1(label) native2(#label, label)
 
 #define colon3(name, label, flag) \
-    body a_##label[];    \
+    body a_##label[];             \
     word w_##label = {_lw,        \
                       name,       \
                       flag,       \
                       a_##label}; \
-    body a_##label[] =
+    body a_##label[] = {impl(docol),
 
 #define colon2(name, label) colon3(name, label, 0)
 
