@@ -1,7 +1,7 @@
 #include "global.hpp"
 
-void **pc;
-void **w;
+body *pc;
+body *w;
 int32_t *stack;
 void (***rstack)();
 
