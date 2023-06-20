@@ -7,7 +7,12 @@ static void push(int32_t value)
     return;
 }
 
-static int32_t pop();
+static int32_t pop()
+{
+    int32_t value = *stack;
+    stack--;
+    return value;
+}
 
 [[noreturn]] void drop()
 {
