@@ -1,6 +1,6 @@
 #include "words.hpp"
 
-static void (**program_stub)();
+static body *program_stub = &w_main_stub.xt;
 
 static void push(int32_t value)
 {
@@ -34,7 +34,7 @@ native1(init)
 {
     stack = stack_start;
     rstack = rstack_start;
-    pc = (void **)program_stub;
+    pc = program_stub;
     state = 0;
     here = dict_mem;
     next();
