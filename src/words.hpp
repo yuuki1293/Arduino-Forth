@@ -9,6 +9,8 @@
 static void push(int32_t value);
 static int32_t pop();
 
+[[noreturn]] void init();
+
 [[noreturn]] void drop();
 
 [[noreturn]] void swap();

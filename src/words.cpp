@@ -14,6 +14,16 @@ static int32_t pop()
     return value;
 }
 
+native1(init)
+{
+    stack = stack_start;
+    pc = w_stub.xt;
+    state = 0;
+    here = dict_mem;
+    next();
+}
+#define _lw ref(init)
+
 native1(drop)
 {
     stack--;
