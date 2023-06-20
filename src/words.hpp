@@ -8,12 +8,14 @@
 
 static void push(int32_t value);
 static int32_t pop();
-static void rpush(void (**f)());
-static void (**rpop())();
+static void rpush(body *body);
+static body *rpop();
 
 [[noreturn]] void i_init();
 
 [[noreturn]] void i_docol();
+
+[[noreturn]] void i_exit();
 
 [[noreturn]] void i_drop();
 
