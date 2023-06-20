@@ -19,6 +19,8 @@ static void (**rpop())();
 
 [[noreturn]] void swap();
 
+extern void **a_main_stub[];
+
 extern word *last_word;
 
 #endif // WORDS_HPP
