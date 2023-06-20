@@ -21,4 +21,6 @@ static int32_t pop()
 }
 
 native1(drop);
-#define _lw w_drop
+#define _lw ref(drop)
+
+word* last_word = _lw;
