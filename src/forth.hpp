@@ -7,6 +7,4 @@
 #include "macro.hpp"
 #include "words.hpp"
 
-void next();
-
 #endif // FORTH_HPP
