@@ -50,6 +50,13 @@ native1(docol)
 }
 #define _lw ref(docol)
 
+native1(exit)
+{
+    pc = rpop();
+    next();
+}
+#define _lw ref(exit)
+
 native1(drop)
 {
     stack--;
