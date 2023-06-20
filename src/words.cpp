@@ -19,12 +19,18 @@ static int32_t pop()
 native1(init)
 {
     stack = stack_start;
+    rstack = rstack_start;
     pc = program_stub;
     state = 0;
     here = dict_mem;
     next();
 }
 #define _lw ref(init)
+
+native1(docol)
+{
+
+}
 
 native1(drop)
 {
