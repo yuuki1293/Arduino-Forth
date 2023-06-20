@@ -9,11 +9,11 @@ extern body w;
 extern int32_t *stack;
 extern body **rstack;
 
-extern int32_t stack_start[1024];
+extern int32_t stack_start[256];
 extern body *rstack_start[64];
-extern char input_buf[256];
-extern int32_t user_mem[1024];
-extern word dict_mem[256];
+extern char input_buf[64];
+extern int32_t user_mem[256];
+extern word dict_mem[64];
 
 extern uint32_t state;
 extern word *here;
