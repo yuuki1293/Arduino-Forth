@@ -5,7 +5,7 @@
 #include "forth_def.hpp"
 
 extern body *pc;
-extern body *w;
+extern body w;
 extern int32_t *stack;
 extern body **rstack;
 
