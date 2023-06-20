@@ -3,8 +3,9 @@
 
 union body
 {
-    void (*impl)();
     body *xt;
+    int8_t value;
+    void (*impl)();
 };
 
 struct word
