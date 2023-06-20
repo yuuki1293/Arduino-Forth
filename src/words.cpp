@@ -1,7 +1,18 @@
 #include "words.hpp"
 
-void drop(){
+static void push(int32_t value)
+{
     stack++;
+    *stack = value;
+    return;
+}
+
+static int32_t pop();
+
+[[noreturn]] void drop()
+{
+    stack--;
+    next();
 }
 
 native1(drop);
