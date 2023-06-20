@@ -16,16 +16,16 @@ static int32_t pop()
     return value;
 }
 
-static void rpush(void (*f)())
+static void rpush(void (**f)())
 {
     rstack++;
     *rstack = f;
     return;
 }
 
-static void (*rpop())()
+static void (**rpop())()
 {
-    void (*f)() = *rstack;
+    void (**f)() = *rstack;
     rstack--;
     return f;
 }
@@ -43,6 +43,7 @@ native1(init)
 
 native1(docol)
 {
+    rpush(pc);
 }
 
 native1(drop)
