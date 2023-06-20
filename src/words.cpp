@@ -16,6 +16,13 @@ static int32_t pop()
     return value;
 }
 
+static void rpush(void (*f)())
+{
+    rstack++;
+    *rstack = f;
+    return;
+}
+
 native1(init)
 {
     stack = stack_start;
@@ -29,7 +36,6 @@ native1(init)
 
 native1(docol)
 {
-
 }
 
 native1(drop)
@@ -50,7 +56,8 @@ native1(swap)
 }
 #define _lw ref(swap)
 
-colon1(main_stub)
-(void (*)())1, (void (*)())2, *w_swap.xt};
+colon1(main_stub)(void (*)()) 1, (void (*)())2, *w_swap.xt
+}
+;
 
 word *last_word = _lw;
