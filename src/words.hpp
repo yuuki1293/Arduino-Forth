@@ -9,7 +9,7 @@
 static void push(int32_t value);
 static int32_t pop();
 static void rpush(void (*f)());
-static void (*f)() rpop();
+static void (*rpop())();
 
 [[noreturn]] void init();
 

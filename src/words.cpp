@@ -23,6 +23,13 @@ static void rpush(void (*f)())
     return;
 }
 
+static void (*rpop())()
+{
+    void (*f)() = *rstack;
+    rstack--;
+    return f;
+}
+
 native1(init)
 {
     stack = stack_start;
