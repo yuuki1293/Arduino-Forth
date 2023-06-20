@@ -27,6 +27,36 @@
             "cStandard": "c11",
             "cppStandard": "c++17",
             "intelliSenseMode": "linux-gcc-x64"
+        },
+        {
+            "name": "Mac",
+            "includePath": [
+                "~/Library/Arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino",
+                "~/Library/Arduino15/packages/arduino/hardware/avr/1.8.6/variants/standard",
+                "~/Library/Arduino15/packages/arduino/hardware/avr/1.8.6/libraries/EEPROM/src",
+                "~/Library/Arduino15/packages/arduino/hardware/avr/1.8.6//libraries/HID/src",
+                "~/Library/Arduino15/packages/arduino/hardware/avr/1.8.6//libraries/SoftwareSerial/src",
+                "~/Library/Arduino15/packages/arduino/hardware/avr/1.8.6//libraries/SPI/src",
+                "~/Library/Arduino15/packages/arduino/hardware/avr/1.8.6//libraries/Wire/src",
+                "~/Library/Arduino15/packages/arduino/hardware/avr/1.8.6//libraries/SPI/src",
+                "${workspaceRoot}"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE",
+                "F_CPU=16000000L",
+                "ARDUINO=10805",
+                "ARDUINO_AVR_UNO",
+                "ARDUINO_ARCH_AVR",
+                "USBCON"
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-gcc-x64",
+            "configurationProvider": "ms-vscode.makefile-tools",
+            "mergeConfigurations": false
         }
     ],
     "version": 4
