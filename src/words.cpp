@@ -40,6 +40,7 @@ native1(init)
     here = dict_mem;
     next();
 }
+#undef _lw
 #define _lw ref(init)
 
 native1(docol)
@@ -49,6 +50,7 @@ native1(docol)
     pc = w.inner;
     next();
 }
+#undef _lw
 #define _lw ref(docol)
 
 native1(exit)
@@ -56,6 +58,7 @@ native1(exit)
     pc = rpop();
     next();
 }
+#undef _lw
 #define _lw ref(exit)
 
 native1(drop)
@@ -63,6 +66,7 @@ native1(drop)
     stack--;
     next();
 }
+#undef _lw
 #define _lw ref(drop)
 
 native1(swap)
@@ -74,6 +78,7 @@ native1(swap)
     push(b);
     next();
 }
+#undef _lw
 #define _lw ref(swap)
 
 colon1(main_stub){
