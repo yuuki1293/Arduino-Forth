@@ -3,6 +3,8 @@
 
 #define _lw 0
 
+#define ref(f) &w_##f
+
 #define native3(name, label, flag) \
     void (*i_##label)() = &label;  \
     word w_##label = {_lw,         \
