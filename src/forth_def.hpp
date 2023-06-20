@@ -6,7 +6,13 @@ struct word
     struct word *next;
     char *name;
     bool flag;
-    void **xt;
+    body xt;
+};
+
+union body
+{
+    void (*impl)();
+    body *xt;
 };
 
 #endif // FORTH_DEF_HPP
