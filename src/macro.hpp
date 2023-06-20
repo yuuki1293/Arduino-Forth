@@ -15,11 +15,11 @@
         .value = a \
     }
 
-#define native3(name, label, flag) \
-    word w_##label = {_lw,         \
-                      name,        \
-                      flag,        \
-                      &i_##label}; \
+#define native3(name, label, flag)           \
+    word w_##label = {_lw,                   \
+                      name,                  \
+                      flag,                  \
+                      {.impl = &i_##label}}; \
     [[noreturn]] void i_##label()
 
 #define native2(name, label) native3(name, label, 0)
@@ -32,7 +32,7 @@
                       name,       \
                       flag,       \
                       a_##label}; \
-    body a_##label[] = {impl(docol),
+    body a_##label[] =
 
 #define colon2(name, label) colon3(name, label, 0)
 
