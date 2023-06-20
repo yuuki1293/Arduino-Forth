@@ -11,13 +11,13 @@ static int32_t pop();
 static void rpush(void (**f)());
 static void (**rpop())();
 
-[[noreturn]] void init();
+[[noreturn]] void i_init();
 
-[[noreturn]] void docol();
+[[noreturn]] void i_docol();
 
-[[noreturn]] void drop();
+[[noreturn]] void i_drop();
 
-[[noreturn]] void swap();
+[[noreturn]] void i_swap();
 
 extern word *last_word;
 
