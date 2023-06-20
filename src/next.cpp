@@ -2,7 +2,7 @@
 
 [[noreturn]] void next()
 {
-    w = pc->xt;
+    w = (*pc).xt;
     pc++;
     w->impl();
 }
