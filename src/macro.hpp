@@ -17,14 +17,15 @@
 
 #define native1(label) native2(#label, label)
 
-#define colon3(name, label, flag, words) \
-    word w_##label = {_lw,               \
-                      name,              \
-                      flag,              \
-                      words}
+#define colon3(name, label, flag) \
+    word w_##label = {_lw,        \
+                      name,       \
+                      flag,       \
+                      a_##label}; \
+    void (*a_##label[])() = {i_docol,
 
-#define colon2(name, label, words) colon3(name, label, 0, words)
+#define colon2(name, label) colon3(name, label, 0)
 
-#define colon1(label, words) colon2(#label, label, 0, words)
+#define colon1(label) colon2(#label, label)
 
 #endif // MACRO_HPP
