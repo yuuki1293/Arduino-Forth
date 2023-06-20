@@ -43,8 +43,12 @@ native1(init)
 
 native1(docol)
 {
-    rpush(pc);
+    rpush((void (**)())pc);
+    w++;
+    pc = w;
+    next();
 }
+#define _lw ref(docol)
 
 native1(drop)
 {
@@ -64,7 +68,7 @@ native1(swap)
 }
 #define _lw ref(swap)
 
-colon1(main_stub)(void (*)()) 1, (void (*)())2, *w_swap.xt
+colon1(main_stub)(void **) 1, (void **)2, w_swap.xt
 }
 ;
 

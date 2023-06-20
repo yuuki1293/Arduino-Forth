@@ -4,8 +4,8 @@
 #include <stdint.h>
 #include "forth_def.hpp"
 
-extern void (**pc)();
-extern void (*w)();
+extern void **pc;
+extern void **w;
 extern int32_t* stack;
 void (***rstack)();
 
