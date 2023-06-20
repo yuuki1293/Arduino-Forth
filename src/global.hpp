@@ -7,7 +7,7 @@
 extern void **pc;
 extern void **w;
 extern int32_t* stack;
-void (***rstack)();
+extern void (***rstack)();
 
 extern int32_t stack_start[1024];
 extern void (**rstack_start[64])();
