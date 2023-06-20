@@ -18,6 +18,7 @@
 #define native1(label) native2(#label, label)
 
 #define colon3(name, label, flag)          \
+    extern void **a_##label[];             \
     word w_##label = {_lw,                 \
                       name,                \
                       flag,                \
