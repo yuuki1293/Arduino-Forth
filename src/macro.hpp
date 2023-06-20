@@ -17,4 +17,14 @@
 
 #define native1(label) native2(#label, label)
 
+#define colon3(name, label, flag, words) \
+    word w_##label = {_lw,               \
+                      name,              \
+                      flag,              \
+                      words}
+
+#define colon2(name, label, words) colon3(name, label, 0, words)
+
+#define colon1(label, words) colon2(#label, label, 0, words)
+
 #endif // MACRO_HPP
