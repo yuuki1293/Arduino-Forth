@@ -1,5 +1,6 @@
 #include "words.hpp"
 
+extern word w_main_stub;
 static body *program_stub = w_main_stub.xt.inner;
 
 static void push(int32_t value)
