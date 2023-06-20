@@ -34,7 +34,7 @@ native1(init)
 {
     stack = stack_start;
     rstack = rstack_start;
-    pc = program_stub;
+    pc = (void **)program_stub;
     state = 0;
     here = dict_mem;
     next();

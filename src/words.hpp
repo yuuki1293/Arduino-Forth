@@ -13,6 +13,8 @@ static void (**rpop())();
 
 [[noreturn]] void init();
 
+[[noreturn]] void docol();
+
 [[noreturn]] void drop();
 
 [[noreturn]] void swap();
