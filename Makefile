@@ -4,17 +4,22 @@ BOARD = arduino:avr:uno
 CC = g++
 LD = g++
 CFLAGS = -pedantic-errors -Wall -Werror -Wextra -ggdb -std=c++2a
+OBJDIR = obj
+MODULES = src
 
 all: compile
 
-compile: src/src.ino
+compile: $(MODULES)/src.ino
 	$(AC) compile $(AFLAGS) $(BOARD) src
 
-local: forth.o global.o next.o words.o
+local: $(foreach src, forth.o global.o next.o words.o, $(OBJDIR)/$(src))
 	$(LD) -o $@ $^
 
-%.o: src/%.cpp src/%.hpp
+$(OBJDIR)/%.o: $(MODULES)/%.cpp $(MODULES)/%.hpp $(OBJDIR) 
 	$(CC) $(CFLAGS) -o $@ -c $<
+
+$(OBJDIR):
+	mkdir -p $@
 
 clean:
 	rm -f *.o main
