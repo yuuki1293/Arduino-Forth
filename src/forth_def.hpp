@@ -13,7 +13,7 @@ union body
 struct word
 {
     struct word *next;
-    char *name;
+    const char *name;
     bool flag;
     body xt;
 };
