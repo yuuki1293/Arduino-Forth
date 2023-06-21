@@ -6,11 +6,6 @@
 #include "macro.hpp"
 #include "next.hpp"
 
-static void push(int32_t value);
-static int32_t pop();
-static void rpush(body *body);
-static body *rpop();
-
 [[noreturn]] void i_init();
 
 [[noreturn]] void i_docol();
