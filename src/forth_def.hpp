@@ -7,7 +7,7 @@ union body
 {
     body *inner;
     size_t value;
-    void (*impl)();
+    void (*impl)() __attribute__((noreturn));
 };
 
 struct word
