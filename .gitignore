@@ -98,3 +98,5 @@ dkms.conf
 
 # Ignore arduino-cli
 /bin/arduino-cli
+
+local
