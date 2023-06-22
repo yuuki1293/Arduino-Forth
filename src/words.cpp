@@ -510,7 +510,7 @@ native1(inbuf)
 #define _lw ref(inbuf)
 
 /**
- * ユーザーメモリの開始アドレスをスタックにプッシュする。
+ * ユーザーメモリのアドレスをスタックにプッシュする。
  * ( -- addr )
  */
 native1(mem)
@@ -521,6 +521,10 @@ native1(mem)
 #undef _lw
 #define _lw ref(mem)
 
+/**
+ * last_wordをスタックにプッシュする。
+ * ( -- addr )
+ */
 native1(last_word)
 {
     push((intptr_t)last_word);
