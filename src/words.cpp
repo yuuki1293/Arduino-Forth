@@ -39,6 +39,11 @@ static void rpush(body *body)
     return;
 }
 
+/**
+ * @brief リターンスタックからアドレスをポップする。
+ * 
+ * @return body* アドレス
+ */
 static body *rpop()
 {
     body *body = *rstack;
