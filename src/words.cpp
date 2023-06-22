@@ -418,15 +418,15 @@ native1(word)
 native1(number)
 {
     char *cp;
-    char **endptr;
+    char *endptr;
     intptr_t num, leng;
 
     cp = (char *)pop();
 
-    num = strtol(cp, endptr, 0);
+    num = strtol(cp, &endptr, 0);
     leng = strlen(cp);
 
-    if (strlen(*endptr))
+    if (strlen(endptr))
     {
         leng = 0;
     }
