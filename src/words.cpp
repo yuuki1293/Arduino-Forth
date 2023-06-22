@@ -501,11 +501,7 @@ native1(lit)
  * インプットバッファのアドレスをスタックにプッシュする。
  * ( -- addr )
  */
-native1(inbuf)
-{
-    push((intptr_t)input_buf);
-    next();
-}
+const2(inbuf, input_buf);
 #undef _lw
 #define _lw ref(inbuf)
 
@@ -513,11 +509,7 @@ native1(inbuf)
  * ユーザーメモリのアドレスをスタックにプッシュする。
  * ( -- addr )
  */
-native1(mem)
-{
-    push((intptr_t)user_mem);
-    next();
-}
+const2(mem, user_mem);
 #undef _lw
 #define _lw ref(mem)
 
@@ -530,6 +522,7 @@ native1(last_word)
     push((intptr_t)last_word);
     next();
 }
+const1(last_word);
 #undef _lw
 #define _lw ref(last_word)
 
@@ -537,11 +530,7 @@ native1(last_word)
  * stateをスタックにプッシュする。
  * ( -- addr )
  */
-native1(state)
-{
-    push((intptr_t)state);
-    next();
-}
+const1(state);
 #undef _lw
 #define _lw ref(state)
 
@@ -549,11 +538,7 @@ native1(state)
  * 辞書メモリの空き先頭アドレスをスタックにプッシュする。
  * ( -- addr )
  */
-native1(here)
-{
-    push((intptr_t)here);
-    next();
-}
+const1(here);
 #undef _lw
 #define _lw ref(here)
 
