@@ -79,6 +79,9 @@ native1(docol)
 #undef _lw
 #define _lw ref(docol)
 
+/**
+ * 全てのコロンワードの終わり。
+ */
 native1(exit)
 {
     pc = rpop();
