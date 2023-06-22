@@ -466,6 +466,25 @@ native1(branch)
 #define _lw ref(branch)
 
 /**
+ * スタックの値が0の場合、次の命令の数値だけ命令をスキップする。
+ * コンパイルモードのみ！
+ * ( x -- )
+ */
+native2("0branch", branch0)
+{
+    bool flag;
+    flag = pop();
+
+    if (!flag)
+        pc += pc->value;
+    pc++;
+
+    next();
+}
+#undef _lw
+#define _lw ref(branch0)
+
+/**
  * 次の命令の数値をスタックヘプッシュする
  * ( -- a )
  */
