@@ -1,6 +1,6 @@
 #include "words.hpp"
 
-extern word w_main_stub;
+extern forth_word w_main_stub;
 static body program_stub = {.inner = w_main_stub.xt};
 
 /**
@@ -277,7 +277,7 @@ colon1(main_stub){
 #undef _lw
 #define _lw ref(main_stub)
 
-word *last_word = _lw;
+forth_word *last_word = _lw;
 
 /**
  * @brief 最初に呼び出されるワードを呼び出す。

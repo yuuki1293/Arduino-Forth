@@ -10,9 +10,9 @@ union body
     void (*impl)() __attribute__((noreturn));
 };
 
-struct word
+struct forth_word
 {
-    struct word *next;
+    struct forth_word *next;
     const char *name;
     bool flag;
     body *xt;

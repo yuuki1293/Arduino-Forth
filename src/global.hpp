@@ -20,9 +20,9 @@ extern int32_t stack_start[FORTH_STACK_SIZE];
 extern body *rstack_start[FORTH_RSTACK_SIZE];
 extern char input_buf[FORTH_INPUT_BUF];
 extern int32_t user_mem[FORTH_USER_MEM];
-extern word dict_mem[FORTH_DICT_MEM];
+extern forth_word dict_mem[FORTH_DICT_MEM];
 
 extern uint32_t state;
-extern word *here;
+extern forth_word *here;
 
 #endif // GLOBAL_HPP

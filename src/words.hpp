@@ -11,7 +11,7 @@
 #include "macro.hpp"
 #include "next.hpp"
 
-extern word *last_word;
+extern forth_word *last_word;
 
 [[noreturn]] void init();
 
