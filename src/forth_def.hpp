@@ -15,7 +15,7 @@ struct word
     struct word *next;
     const char *name;
     bool flag;
-    body xt;
+    body *xt;
 };
 
 #endif // FORTH_DEF_HPP
