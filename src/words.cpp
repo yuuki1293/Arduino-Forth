@@ -452,10 +452,18 @@ native1(prints)
 #undef _lw
 #define _lw ref(prints)
 
+/**
+ * 次の命令の数値だけ命令をスキップする。
+ * コンパイルモードのみ！
+ */
 native1(branch)
 {
-
+    pc += pc->value;
+    pc++;
+    next();
 }
+#undef _lw
+#define _lw ref(branch)
 
 /**
  * 次の命令の数値をスタックヘプッシュする
