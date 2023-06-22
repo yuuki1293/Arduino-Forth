@@ -570,6 +570,20 @@ native1(execute)
 #define _lw ref(execute)
 
 /**
+ * スタックのアドレスをデリファレンスする。
+ * ( addr -- data )
+ */
+native2("@", fetch)
+{
+    intptr_t *x;
+    x = (intptr_t *)pop();
+    push(*x);
+    next();
+}
+#undef _lw
+#define _lw ref(fetch)
+
+/**
  * メインワード。
  */
 colon1(main_stub){
