@@ -161,6 +161,8 @@ native1(rot)
     push(x3);
     next();
 }
+#undef _lw
+#define _lw ref(rot)
 
 /**
  * スタックの1番目と2番目を足す。
@@ -174,6 +176,8 @@ native2("+", plus)
     push(x1 + x2);
     next();
 }
+#undef _lw
+#define _lw ref(plus)
 
 /**
  * スタックの1番目から2番目を引く。
@@ -187,6 +191,8 @@ native2("-", minus)
     push(x1 - x2);
     next();
 }
+#undef _lw
+#define _lw ref(minus)
 
 /**
  * スタックの1番目と2番目を掛ける
@@ -200,6 +206,8 @@ native2("*", mul)
     push(x1 * x2);
     next();
 }
+#undef _lw
+#define _lw ref(mul)
 
 /**
  * スタックの1番目を2番目で割る。
@@ -213,6 +221,8 @@ native2("/", div)
     push(x1 / x2);
     next();
 }
+#undef _lw
+#define _lw ref(div)
 
 /**
  * スタックの値の論理否定を取る。
@@ -225,6 +235,8 @@ native1(not )
     push(!x);
     next();
 }
+#undef _lw
+#define _lw ref(not)
 
 /**
  * スタックの1番目と2番目が等しいか比較する。
@@ -238,6 +250,8 @@ native2("=", eq)
     push(x1 == x2);
     next();
 }
+#undef _lw
+#define _lw ref(eq)
 
 /**
  * スタックの文字列へのポインタの長さを返す。
@@ -250,6 +264,8 @@ native1(count)
     push(strlen(cp));
     next();
 }
+#undef _lw
+#define _lw ref(count)
 
 /**
  * スタックの数をプリントする。
@@ -262,6 +278,8 @@ native2(".", dot)
     print_int(x);
     next();
 }
+#undef _lw
+#define _lw ref(dot)
 
 /**
  * スタックの数を全てプリントする。スタックは消費されない。
@@ -275,6 +293,8 @@ native2(".s", show_stack)
 
     next();
 }
+#undef _lw
+#define _lw ref(show_stack)
 
 /**
  * データスタックのアドレスをリターンスタックにプッシュする。
@@ -287,6 +307,8 @@ native2(">r", push_r)
     rpush(x);
     next();
 }
+#undef _lw
+#define _lw ref(push_r)
 
 /**
  * リターンスタックのアドレスをデータスタックにプッシュする。
@@ -299,6 +321,8 @@ native2("r>", pop_r)
     push((intptr_t)x);
     next();
 }
+#undef _lw
+#define _lw ref(pop_r)
 
 /**
  * リターンスタックのアドレスをデータスタックにプッシュする。リターンスタックは消費されない。
@@ -309,6 +333,8 @@ native2("r@", fetch_r)
     push((intptr_t)*rstack);
     next();
 }
+#undef _lw
+#define _lw ref(fetch_r)
 
 /**
  * 次の命令の数値をスタックヘプッシュする
@@ -320,6 +346,8 @@ native1(lit)
     pc++;
     next();
 }
+#undef _lw
+#define _lw ref(lit)
 
 /**
  * メインワード。
