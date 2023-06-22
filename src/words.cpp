@@ -438,6 +438,10 @@ native1(number)
 #undef _lw
 #define _lw ref(number)
 
+/**
+ * スタックのポインタの文字列をプリントする。
+ * ( str -- )
+ */
 native1(prints)
 {
     char *cp;
@@ -447,6 +451,11 @@ native1(prints)
 }
 #undef _lw
 #define _lw ref(prints)
+
+native1(branch)
+{
+
+}
 
 /**
  * 次の命令の数値をスタックヘプッシュする
