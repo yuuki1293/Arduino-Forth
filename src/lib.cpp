@@ -34,7 +34,7 @@ size_t read_str(char *buf)
         buf[i] = input;
         i++;
 
-        if (input == ' ' || input == '\n' || input == '\t' || input == '\0')
+        if (isspace(input))
         {
             break;
         }
