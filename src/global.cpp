@@ -2,10 +2,10 @@
 
 body *pc;
 body *w;
-int32_t *stack;
+intptr_t *stack;
 body **rstack;
 
-int32_t stack_start[FORTH_STACK_SIZE];
+intptr_t stack_start[FORTH_STACK_SIZE];
 body *rstack_start[FORTH_RSTACK_SIZE];
 char input_buf[FORTH_INPUT_BUF];
 int32_t user_mem[FORTH_USER_MEM];
