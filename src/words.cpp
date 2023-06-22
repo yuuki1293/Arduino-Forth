@@ -412,6 +412,31 @@ native1(word)
 #define _lw ref(word)
 
 /**
+ * スタックのポインタの文字列を符号付き整数に変換する。変換後の整数と変換した文字列の長さをスタックにプッシュする。
+ * ( str -- nu length)
+ */
+native1(number)
+{
+    char *cp;
+    char **endptr;
+    intptr_t num, leng;
+
+    cp = (char *)pop();
+
+    num = strtol(cp, endptr, 0);
+    leng = strlen(cp);
+
+    if (strlen(*endptr))
+    {
+        leng = 0;
+    }
+
+    push(num);
+    push(leng);
+    next();
+}
+
+/**
  * 次の命令の数値をスタックヘプッシュする
  * ( -- a )
  */
