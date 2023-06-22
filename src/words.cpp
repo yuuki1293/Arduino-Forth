@@ -241,10 +241,10 @@ native2("=", eq)
  */
 native2(".s", show_stack)
 {
-    for (int32_t *i = stack_start; i < stack; i++)
+    for (int32_t *i = stack; i > stack_start; i--)
     {
 #if defined(LOCAL)
-        printf("%d", *i);
+        printf("%d\n", *i);
 #else
         Serial.write(*i);
 #endif
