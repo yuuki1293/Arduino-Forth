@@ -1,7 +1,7 @@
 #include "words.hpp"
 
 extern word w_main_stub;
-static body *program_stub = w_main_stub.xt.inner;
+static body program_stub = {.inner = w_main_stub.xt};
 
 static void push(int32_t value)
 {
@@ -35,7 +35,7 @@ native1(init)
 {
     stack = stack_start;
     rstack = rstack_start;
-    pc = program_stub;
+    pc = &program_stub;
     state = 0;
     here = dict_mem;
     next();
@@ -46,8 +46,8 @@ native1(init)
 native1(docol)
 {
     rpush(pc);
-    w.inner++;
-    pc = w.inner;
+    w++;
+    pc = w;
     next();
 }
 #undef _lw
@@ -81,9 +81,6 @@ native1(swap)
 #undef _lw
 #define _lw ref(swap)
 
-colon1(main_stub){
-    impl(docol),
-    lit(1), lit(2),
-    w_swap.xt};
+colon1(main_stub){{.impl = &i_docol}, w_exit.xt};
 
 word *last_word = _lw;
