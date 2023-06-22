@@ -11,5 +11,5 @@ char input_buf[FORTH_INPUT_BUF];
 intptr_t user_mem[FORTH_USER_MEM];
 forth_word dict_mem[FORTH_DICT_MEM];
 
-uint32_t state = 0;
+intptr_t state = 0;
 forth_word *here = dict_mem;
