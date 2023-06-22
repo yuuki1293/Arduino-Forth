@@ -237,6 +237,23 @@ native2("=", eq)
 }
 
 /**
+ * スタックの数を全てプリントする。スタックは消費されない。
+ */
+native2(".s", show_stack)
+{
+    for (int32_t *i = stack_start; i < stack; i++)
+    {
+#if defined(LOCAL)
+        printf("%d", *i);
+#else
+        Serial.write(*i);
+#endif
+    }
+
+    next();
+}
+
+/**
  * メインワード。
  */
 colon1(main_stub){
