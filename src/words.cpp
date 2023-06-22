@@ -27,6 +27,11 @@ static int32_t pop()
     return value;
 }
 
+/**
+ * @brief リターンスタックにアドレスをプッシュする。
+ * 
+ * @param body アドレス
+ */
 static void rpush(body *body)
 {
     rstack++;
