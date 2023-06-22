@@ -199,6 +199,19 @@ native2("*", mul)
 }
 
 /**
+ * スタックの1番目を2番目で割る。
+ * ( nu2 nu1 -- [ nu1 / nu2 ] )
+ */
+native2("/", div)
+{
+    int32_t x1, x2;
+    x1 = pop();
+    x2 = pop();
+    push(x1 / x2);
+    next();
+}
+
+/**
  * メインワード。
  */
 colon1(main_stub){
