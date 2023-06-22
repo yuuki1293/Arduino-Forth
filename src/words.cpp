@@ -498,6 +498,18 @@ native1(lit)
 #define _lw ref(lit)
 
 /**
+ * インプットバッファのアドレスをスタックにプッシュする。
+ * ( -- addr )
+ */
+native1(inbuf)
+{
+    push((intptr_t)input_buf);
+    next();
+}
+#undef _lw
+#define _lw ref(inbuf)
+
+/**
  * メインワード。
  */
 colon1(main_stub){
