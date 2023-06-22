@@ -91,5 +91,7 @@ native1(swap)
 colon1(main_stub){
     impl(docol),
     xt(bye)};
+#undef _lw
+#define _lw ref(main_stub)
 
 word *last_word = _lw;
