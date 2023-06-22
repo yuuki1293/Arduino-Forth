@@ -435,6 +435,18 @@ native1(number)
     push(leng);
     next();
 }
+#undef _lw
+#define _lw ref(number)
+
+native1(prints)
+{
+    char *cp;
+    cp = (char *)pop();
+    print_str(cp);
+    next();
+}
+#undef _lw
+#define _lw ref(prints)
 
 /**
  * 次の命令の数値をスタックヘプッシュする
