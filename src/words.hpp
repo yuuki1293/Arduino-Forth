@@ -15,6 +15,6 @@
 
 extern forth_word *last_word;
 
-[[noreturn]] void init();
+[[noreturn]] void forth_init();
 
 #endif // WORDS_HPP

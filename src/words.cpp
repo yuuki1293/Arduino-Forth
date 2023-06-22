@@ -290,7 +290,7 @@ forth_word *last_word = _lw;
 /**
  * @brief 最初に呼び出されるワードを呼び出す。
  */
-[[noreturn]] void init()
+[[noreturn]] void forth_init()
 {
     i_init();
 }
