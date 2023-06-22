@@ -485,7 +485,7 @@ native2("0branch", branch0)
 #define _lw ref(branch0)
 
 /**
- * 次の命令の数値をスタックヘプッシュする
+ * 次の命令の数値をスタックヘプッシュする。
  * ( -- a )
  */
 native1(lit)
@@ -508,6 +508,18 @@ native1(inbuf)
 }
 #undef _lw
 #define _lw ref(inbuf)
+
+/**
+ * ユーザーメモリの開始アドレスをスタックにプッシュする。
+ * ( -- addr )
+ */
+native1(mem)
+{
+    push((intptr_t)user_mem);
+    next();
+}
+#undef _lw
+#define _lw ref(mem)
 
 /**
  * メインワード。
