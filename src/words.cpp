@@ -144,6 +144,21 @@ native1(dup)
 #define _lw ref(dup)
 
 /**
+ * スタックの1番目から3番目を回転させる
+ * ( x3 x2 x1 -- x2 x1 x3 )
+ */
+native1(rot)
+{
+    int32_t x1, x2, x3;
+    x1 = pop();
+    x2 = pop();
+    x3 = pop();
+    push(x2);
+    push(x1);
+    push(x3);
+}
+
+/**
  * メインワード。
  */
 colon1(main_stub){
