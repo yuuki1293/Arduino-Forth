@@ -9,6 +9,7 @@
 #endif
 
 #include "global.hpp"
+#include "lib.hpp"
 #include "macro.hpp"
 #include "next.hpp"
 

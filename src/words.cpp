@@ -255,11 +255,7 @@ native2(".s", show_stack)
 {
     for (intptr_t *i = stack; i > stack_start; i--)
     {
-#if defined(LOCAL)
-        printf("%ld\n", *i);
-#else
-        Serial.write(*i);
-#endif
+        print_int(*i);
     }
 
     next();
