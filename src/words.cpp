@@ -5,7 +5,7 @@ static body program_stub = {.inner = w_main_stub.xt};
 
 /**
  * @brief スタックに値をプッシュする。
- * 
+ *
  * @param value 値
  */
 static void push(int32_t value)
@@ -17,7 +17,7 @@ static void push(int32_t value)
 
 /**
  * @brief スタックから値をポップする。
- * 
+ *
  * @return int32_t 値
  */
 static int32_t pop()
@@ -29,7 +29,7 @@ static int32_t pop()
 
 /**
  * @brief リターンスタックにアドレスをプッシュする。
- * 
+ *
  * @param body アドレス
  */
 static void rpush(body *body)
@@ -41,7 +41,7 @@ static void rpush(body *body)
 
 /**
  * @brief リターンスタックからアドレスをポップする。
- * 
+ *
  * @return body* アドレス
  */
 static body *rpop()
@@ -144,7 +144,7 @@ native1(dup)
 #define _lw ref(dup)
 
 /**
- * スタックの1番目から3番目を回転させる
+ * スタックの1番目から3番目を回転させる。
  * ( x3 x2 x1 -- x2 x1 x3 )
  */
 native1(rot)
@@ -156,6 +156,18 @@ native1(rot)
     push(x2);
     push(x1);
     push(x3);
+}
+
+/**
+ * スタックの1番目と2番目を足す。
+ * ( nu2 nu1 -- [ nu1 + nu2 ] )
+ */
+native2("+", plus)
+{
+    int32_t x1, x2;
+    x1 = pop();
+    x2 = pop();
+    push(x1 + x2);
 }
 
 /**
