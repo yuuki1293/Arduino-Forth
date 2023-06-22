@@ -6,18 +6,8 @@
 #include "macro.hpp"
 #include "next.hpp"
 
-[[noreturn]] void i_init();
-
-[[noreturn]] void i_docol();
-
-[[noreturn]] void i_exit();
-
-[[noreturn]] void i_bye();
-
-[[noreturn]] void i_drop();
-
-[[noreturn]] void i_swap();
-
 extern word *last_word;
+
+[[noreturn]] void init();
 
 #endif // WORDS_HPP

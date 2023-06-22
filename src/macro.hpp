@@ -18,6 +18,7 @@
     }
 
 #define native3(name, label, flag)            \
+    [[noreturn]] void i_##label();            \
     body a_##label[] = {{.impl = i_##label}}; \
     word w_##label = {_lw,                    \
                       name,                   \
