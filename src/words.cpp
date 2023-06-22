@@ -185,6 +185,15 @@ native2("-", minus)
     next();
 }
 
+native2("*", mul)
+{
+    int32_t x1, x2;
+    x1 = pop();
+    x2 = pop();
+    push(x1 * x2);
+    next();
+}
+
 /**
  * メインワード。
  */
