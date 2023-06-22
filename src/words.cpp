@@ -212,6 +212,18 @@ native2("/", div)
 }
 
 /**
+ * スタックの値の論理否定を取る。
+ * ( x = !x )
+ */
+native1(not )
+{
+    int32_t x;
+    x = pop();
+    push(!x);
+    next();
+}
+
+/**
  * メインワード。
  */
 colon1(main_stub){
