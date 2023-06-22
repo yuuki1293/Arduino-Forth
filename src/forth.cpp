@@ -3,6 +3,6 @@
 #if defined(LOCAL)
 int main()
 {
-    init();
+    forth_init();
 }
 #endif
