@@ -224,6 +224,19 @@ native1(not )
 }
 
 /**
+ * スタックの1番目と2番目が等しいか比較する。
+ * ( nu1 nu2 -- [ nu1 = nu2 ] )
+ */
+native2("=", eq)
+{
+    int32_t x1, x2;
+    x1 = pop();
+    x2 = pop();
+    push(x1 == x2);
+    next();
+}
+
+/**
  * メインワード。
  */
 colon1(main_stub){
