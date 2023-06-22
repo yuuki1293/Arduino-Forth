@@ -3,6 +3,6 @@
 #if defined(LOCAL)
 int main()
 {
-    i_init();
+    init();
 }
 #endif

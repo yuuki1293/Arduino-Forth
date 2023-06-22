@@ -95,3 +95,8 @@ colon1(main_stub){
 #define _lw ref(main_stub)
 
 word *last_word = _lw;
+
+[[noreturn]] void init()
+{
+    i_init();
+}
