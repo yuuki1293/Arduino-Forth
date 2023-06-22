@@ -51,6 +51,9 @@ static body *rpop()
     return body;
 }
 
+/**
+ * 最初に呼び出されるワード。
+ */
 native1(init)
 {
     stack = stack_start;
