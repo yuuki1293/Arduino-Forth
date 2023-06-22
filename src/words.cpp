@@ -76,6 +76,7 @@ native1(docol)
     pc = w;
     next();
 }
+#define docol_impl impl(docol)
 #undef _lw
 #define _lw ref(docol)
 
@@ -517,11 +518,6 @@ const2(mem, user_mem);
  * last_wordをスタックにプッシュする。
  * ( -- addr )
  */
-native1(last_word)
-{
-    push((intptr_t)last_word);
-    next();
-}
 const1(last_word);
 #undef _lw
 #define _lw ref(last_word)
@@ -652,10 +648,24 @@ native1(create)
 #define _lw ref(create)
 
 /**
+ * 入力からワードを読み、その定義を開始する。
+ */
+colon2(":", colon){
+    docol_impl,
+    xt(inbuf), xt(word), xt(drop),
+    lit(0), xt(inbuf),
+    xt(create),
+    xt(lit), impl(docol), xt(comma),
+    xt(state), lit(1), xt(write),
+    xt(exit)};
+#undef _lw
+#define _lw ref(colon)
+
+/**
  * メインワード。
  */
 colon1(main_stub){
-    impl(docol),
+    docol_impl,
     lit(1), lit(2),
     xt(show_stack),
     xt(plus),
