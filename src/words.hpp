@@ -2,6 +2,7 @@
 #define WORDS_HPP
 
 #include <stdint.h>
+#include <string.h>
 
 #if !defined(LOCAL)
 #include <Arduino.h>

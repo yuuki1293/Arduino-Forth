@@ -237,6 +237,18 @@ native2("=", eq)
 }
 
 /**
+ * スタックの文字列へのポインタの長さを返す。
+ * ( str -- len )
+ */
+native1(count)
+{
+    char *cp;
+    cp = (char *)pop();
+    push(strlen(cp));
+    next();
+}
+
+/**
  * スタックの数を全てプリントする。スタックは消費されない。
  */
 native2(".s", show_stack)
