@@ -15,11 +15,12 @@
         .value = a \
     }
 
-#define native3(name, label, flag)           \
-    word w_##label = {_lw,                   \
-                      name,                  \
-                      flag,                  \
-                      {.impl = &i_##label}}; \
+#define native3(name, label, flag)            \
+    body a_##label[] = {{.impl = i_##label}}; \
+    word w_##label = {_lw,                    \
+                      name,                   \
+                      flag,                   \
+                      a_##label};             \
     [[noreturn]] void i_##label()
 
 #define native2(name, label) native3(name, label, 0)
