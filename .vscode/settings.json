@@ -1,4 +1,7 @@
 {
+    "terminal.integrated.env.windows": {
+        "PATH": "${env:PATH}${workspaceFolder}\\bin;"
+    },
     "terminal.integrated.env.linux": {
         "PATH": "${env:PATH}:${workspaceFolder}/bin"
     }
