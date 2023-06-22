@@ -521,6 +521,14 @@ native1(mem)
 #undef _lw
 #define _lw ref(mem)
 
+native1(last_word)
+{
+    push((intptr_t)last_word);
+    next();
+}
+#undef _lw
+#define _lw ref(last_word)
+
 /**
  * メインワード。
  */
