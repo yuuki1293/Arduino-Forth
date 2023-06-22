@@ -185,6 +185,10 @@ native2("-", minus)
     next();
 }
 
+/**
+ * スタックの1番目と2番目を掛ける
+ * ( nu2 nu1 -- [ nu1 * nu2 ] )
+ */
 native2("*", mul)
 {
     int32_t x1, x2;
