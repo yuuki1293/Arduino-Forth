@@ -55,6 +55,6 @@
                             0,                  \
                             a_##label}
 
-#define const1(label, type) const2(label, label)
+#define const1(label) const2(label, label)
 
 #endif // MACRO_HPP
