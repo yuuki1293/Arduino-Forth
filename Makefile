@@ -1,6 +1,7 @@
 AC = arduino-cli
 AFLAGS = --fqbn
 BOARD = arduino:avr:uno
+PORT = /dev/ttyUSB0
 CC = g++
 LD = g++
 CFLAGS = -pedantic-errors -Wall -Werror -Wextra -ggdb -std=c++2a
@@ -11,6 +12,9 @@ all: compile
 
 compile: $(MODULES)/src.ino
 	$(AC) compile $(AFLAGS) $(BOARD) src
+
+upload: $(MODULES)/src.ino
+	$(AC) upload $(AFLAGS) $(BOARD) -p $(PORT) src
 
 local: $(foreach src, forth.o global.o next.o words.o, $(OBJDIR)/$(src))
 	$(LD) -o $@ $^
