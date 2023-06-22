@@ -599,6 +599,20 @@ native2("!", write)
 #define _lw ref(write)
 
 /**
+ * スタックのトップの文字へのアドレスをとしてデリファレンスする。
+ * ( addr -- c )
+ */
+native2("@c", fetch_c)
+{
+    char *cp;
+    cp = (char *)pop();
+    push(*cp);
+    next();
+}
+#undef _lw
+#define _lw ref(fetch_c)
+
+/**
  * メインワード。
  */
 colon1(main_stub){
