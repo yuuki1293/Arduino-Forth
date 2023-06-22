@@ -16,7 +16,7 @@ compile: $(MODULES)/src.ino
 upload: $(MODULES)/src.ino
 	$(AC) upload $(AFLAGS) $(BOARD) -p $(PORT) src
 
-local: $(foreach src, forth.o global.o next.o words.o, $(OBJDIR)/$(src))
+local: $(foreach src, forth.o global.o next.o words.o lib.o, $(OBJDIR)/$(src))
 	$(LD) -o $@ $^
 
 $(OBJDIR)/%.o: $(MODULES)/%.cpp $(MODULES)/%.hpp $(OBJDIR) 
