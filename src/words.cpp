@@ -173,6 +173,19 @@ native2("+", plus)
 }
 
 /**
+ * スタックの1番目から2番目を引く。
+ * ( nu2 nu1 -- [ nu1 - nu2 ] )
+ */
+native2("-", minus)
+{
+    int32_t x1, x2;
+    x1 = pop();
+    x2 = pop();
+    push(x1 - x2);
+    next();
+}
+
+/**
  * メインワード。
  */
 colon1(main_stub){
