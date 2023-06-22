@@ -244,7 +244,7 @@ native2(".s", show_stack)
     for (intptr_t *i = stack; i > stack_start; i--)
     {
 #if defined(LOCAL)
-        printf("%d\n", *i);
+        printf("%p\n", (void *)*i);
 #else
         Serial.write(*i);
 #endif
