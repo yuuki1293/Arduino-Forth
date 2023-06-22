@@ -16,4 +16,6 @@ void print_char(char c);
 
 size_t read_str(char *buf);
 
+void print_str(const char *cp);
+
 #endif // LIB_HPP

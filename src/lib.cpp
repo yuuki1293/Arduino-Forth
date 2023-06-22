@@ -44,3 +44,12 @@ size_t read_str(char *buf)
     return i;
 #endif
 }
+
+void print_str(const char *cp)
+{
+#if defined(LOCAL)
+    printf("%s", cp);
+#else
+    Serial.println(cp);
+#endif
+}
