@@ -401,11 +401,11 @@ native1(emit)
  */
 native1(word)
 {
-    int length;
+    intptr_t len;
     char *buf;
     buf = (char *)pop();
-    length = read_str(buf);
-    push(length);
+    len = read_str(buf);
+    push(len);
     next();
 }
 #undef _lw
