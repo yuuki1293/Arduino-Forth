@@ -269,6 +269,10 @@ native1(lit)
  */
 colon1(main_stub){
     impl(docol),
+    lit(1), lit(2),
+    xt(show_stack),
+    xt(plus),
+    xt(show_stack),
     xt(bye)};
 #undef _lw
 #define _lw ref(main_stub)

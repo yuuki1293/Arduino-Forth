@@ -13,6 +13,7 @@
     }
 
 #define lit(a)     \
+    xt(lit),       \
     {              \
         .value = a \
     }
