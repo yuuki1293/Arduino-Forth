@@ -43,13 +43,13 @@
 
 #define colon1(label) colon2(#label, label)
 
-#define const2(label, type, var) \
-    native1(label)               \
-    {                            \
-        push((type)var);         \
-        next();                  \
+#define const2(label, var)   \
+    native1(label)           \
+    {                        \
+        push((intptr_t)var); \
+        next();              \
     }
 
-#define const1(label, type) const2(label, type, label)
+#define const1(label, type) const2(label, label)
 
 #endif // MACRO_HPP
