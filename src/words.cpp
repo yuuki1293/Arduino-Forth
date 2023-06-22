@@ -156,6 +156,7 @@ native1(rot)
     push(x2);
     push(x1);
     push(x3);
+    next();
 }
 
 /**
@@ -168,6 +169,7 @@ native2("+", plus)
     x1 = pop();
     x2 = pop();
     push(x1 + x2);
+    next();
 }
 
 /**
