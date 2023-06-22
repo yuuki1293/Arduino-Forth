@@ -65,6 +65,8 @@ native1(bye)
 {
     exit(0);
 }
+#undef _lw
+#define _lw ref(bye)
 
 native1(drop)
 {
