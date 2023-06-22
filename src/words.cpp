@@ -112,6 +112,10 @@ native1(drop)
 #undef _lw
 #define _lw ref(drop)
 
+/**
+ * スタックの1番目と2番目を交換する。
+ * ( x2 x1 -- x1 x2 )
+ */
 native1(swap)
 {
     int32_t a, b;
