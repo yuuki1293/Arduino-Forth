@@ -128,6 +128,10 @@ native1(swap)
 #undef _lw
 #define _lw ref(swap)
 
+/**
+ * スタックの値を複製する。
+ * ( a - a a )
+ */
 native1(dup)
 {
     int32_t a;
