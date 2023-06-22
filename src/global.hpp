@@ -12,7 +12,7 @@
 #define FORTH_DICT_MEM 64
 
 extern body *pc;
-extern body w;
+extern body *w;
 extern int32_t *stack;
 extern body **rstack;
 
