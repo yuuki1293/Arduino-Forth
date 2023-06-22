@@ -100,6 +100,9 @@ native1(bye)
 #undef _lw
 #define _lw ref(bye)
 
+/**
+ * スタックから値を1つ捨てる。
+ */
 native1(drop)
 {
     stack--;
