@@ -1,6 +1,9 @@
 #ifndef LIB_HPP
 #define LIB_HPP
 
+#include <stdint.h>
+#include <stdio.h>
+
 #if defined(LOCAL)
 #include <string.h>
 #else
