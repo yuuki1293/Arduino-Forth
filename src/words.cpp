@@ -363,6 +363,22 @@ native1(find)
     push(0);
     next();
 }
+#undef _lw
+#define _lw ref(find)
+
+/**
+ * ワードへのポインタから、実行トークンのアドレスをプッシュする。
+ * ( addr -- addr )
+ */
+native1(cfa)
+{
+    forth_word *x;
+    x = (forth_word *)pop();
+    push((intptr_t)x->xt);
+    next();
+}
+#undef _lw
+#define _lw ref(cfa)
 
 /**
  * 次の命令の数値をスタックヘプッシュする
