@@ -5,6 +5,8 @@
 
 #define ref(f) &w_##f
 
+#define xt(w) w_##w##.xt
+
 #define impl(f)        \
     {                  \
         .impl = &i_##f \

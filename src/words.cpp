@@ -61,6 +61,11 @@ native1(exit)
 #undef _lw
 #define _lw ref(exit)
 
+native1(bye)
+{
+    exit(0);
+}
+
 native1(drop)
 {
     stack--;
@@ -83,6 +88,6 @@ native1(swap)
 
 colon1(main_stub){
     impl(docol),
-    w_exit.xt};
+    xt(bye)};
 
 word *last_word = _lw;
