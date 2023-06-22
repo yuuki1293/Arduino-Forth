@@ -236,7 +236,7 @@ native1(not )
     next();
 }
 #undef _lw
-#define _lw ref(not)
+#define _lw ref(not )
 
 /**
  * スタックの1番目と2番目が等しいか比較する。
@@ -335,6 +335,34 @@ native2("r@", fetch_r)
 }
 #undef _lw
 #define _lw ref(fetch_r)
+
+/**
+ * 文字列へのポインタから、そのワードヘッダへのポインタをプッシュする。
+ * もし、その名前のワードがなければ0をプッシュする。
+ * ( str -- addr )
+ */
+native1(find)
+{
+    char *x;
+    forth_word *word_p;
+
+    x = (char *)pop();
+    word_p = last_word;
+
+    while (!word_p)
+    {
+        if (strcmp(x, word_p->name))
+        {
+            push((intptr_t)word_p);
+            next();
+        }
+
+        word_p = word_p->next;
+    }
+
+    push(0);
+    next();
+}
 
 /**
  * 次の命令の数値をスタックヘプッシュする
