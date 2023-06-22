@@ -661,6 +661,12 @@ colon2(":", colon){
 #undef _lw
 #define _lw ref(colon)
 
+colon3(";", semicolon, 1){
+    docol_impl,
+    xt(lit), xt(exit), xt(comma),
+    xt(state), lit(0), xt(write),
+    xt(exit)};
+
 /**
  * メインワード。
  */
