@@ -395,6 +395,23 @@ native1(emit)
 #define _lw ref(emit)
 
 /**
+ * 文字列を読み取り、スタックのアドレスに格納する。
+ * 文字列の長さをスタックにプッシュする。
+ * ( addr -- length )
+ */
+native1(word)
+{
+    int length;
+    char *buf;
+    buf = (char *)pop();
+    length = read_str(buf);
+    push(length);
+    next();
+}
+#undef _lw
+#define _lw ref(word)
+
+/**
  * 次の命令の数値をスタックヘプッシュする
  * ( -- a )
  */
