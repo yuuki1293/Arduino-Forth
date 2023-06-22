@@ -128,6 +128,17 @@ native1(swap)
 #undef _lw
 #define _lw ref(swap)
 
+native1(dup)
+{
+    int32_t a;
+    a = pop();
+    push(a);
+    push(a);
+    next();
+}
+#undef _lw
+#define _lw ref(dup)
+
 /**
  * メインワード。
  */
