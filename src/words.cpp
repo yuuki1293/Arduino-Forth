@@ -81,6 +81,8 @@ native1(swap)
 #undef _lw
 #define _lw ref(swap)
 
-colon1(main_stub){{.impl = &i_docol}, w_exit.xt};
+colon1(main_stub){
+    impl(docol),
+    w_exit.xt};
 
 word *last_word = _lw;
