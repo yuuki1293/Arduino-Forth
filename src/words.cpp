@@ -90,6 +90,9 @@ native1(exit)
 #undef _lw
 #define _lw ref(exit)
 
+/**
+ * プログラムを正常終了させる。
+ */
 native1(bye)
 {
     exit(0);
