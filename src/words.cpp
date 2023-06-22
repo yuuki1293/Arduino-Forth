@@ -534,6 +534,18 @@ native1(last_word)
 #define _lw ref(last_word)
 
 /**
+ * stateをスタックにプッシュする。
+ * ( -- addr )
+ */
+native1(state)
+{
+    push((intptr_t)state);
+    next();
+}
+#undef _lw
+#define _lw ref(state)
+
+/**
  * メインワード。
  */
 colon1(main_stub){
