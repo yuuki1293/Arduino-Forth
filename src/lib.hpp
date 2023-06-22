@@ -2,10 +2,10 @@
 #define LIB_HPP
 
 #include <stdint.h>
-#include <stdio.h>
+#include <string.h>
 
 #if defined(LOCAL)
-#include <string.h>
+#include <stdio.h>
 #else
 #include <Arduino.h>
 #endif
