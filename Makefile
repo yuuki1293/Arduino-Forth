@@ -16,7 +16,7 @@ local: $(foreach src, forth.o global.o next.o words.o, $(OBJDIR)/$(src))
 	$(LD) -o $@ $^
 
 $(OBJDIR)/%.o: $(MODULES)/%.cpp $(MODULES)/%.hpp $(OBJDIR) 
-	$(CC) $(CFLAGS) -o $@ -c $<
+	$(CC) $(CFLAGS) -D LOCAL -o $@ -c $<
 
 $(OBJDIR):
 	mkdir -p $@
