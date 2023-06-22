@@ -9,7 +9,7 @@
 
 #define impl(f)        \
     {                  \
-        .impl = &i_##f \
+        .impl_p = &i_##f \
     }
 
 #define lit(a)     \
@@ -20,7 +20,7 @@
 
 #define native3(name, label, flag)            \
     [[noreturn]] void i_##label();            \
-    body a_##label[] = {{.impl = i_##label}}; \
+    body a_##label[] = {{.impl_p = i_##label}}; \
     forth_word w_##label = {_lw,                    \
                       name,                   \
                       flag,                   \

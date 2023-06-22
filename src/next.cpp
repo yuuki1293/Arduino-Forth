@@ -4,5 +4,5 @@
 {
     w = pc->inner;
     pc++;
-    w->impl();
+    w->impl_p();
 }

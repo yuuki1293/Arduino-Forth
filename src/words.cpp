@@ -558,6 +558,18 @@ native1(here)
 #define _lw ref(here)
 
 /**
+ * スタックの実行トークンを実行する。
+ * ( xt -- )
+ */
+native1(execute)
+{
+    w = (body *)pop();
+    w->impl_p();
+}
+#undef _lw
+#define _lw ref(execute)
+
+/**
  * メインワード。
  */
 colon1(main_stub){
