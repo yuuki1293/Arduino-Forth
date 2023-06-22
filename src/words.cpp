@@ -381,6 +381,20 @@ native1(cfa)
 #define _lw ref(cfa)
 
 /**
+ * スタックの文字をプリントする。
+ * ( c -- )
+ */
+native1(emit)
+{
+    char c;
+    c = (char)pop();
+    print_char(c);
+    next();
+}
+#undef _lw
+#define _lw ref(emit)
+
+/**
  * 次の命令の数値をスタックヘプッシュする
  * ( -- a )
  */
