@@ -613,7 +613,7 @@ native2("@c", fetch_c)
 #define _lw ref(fetch_c)
 
 /**
- * スタックの実行トークンを定義中のワードに追加
+ * スタックの実行トークンを定義中のワードに追加する。
  * ( xt -- )
  */
 native2(",", comma)
@@ -626,6 +626,21 @@ native2(",", comma)
 }
 #undef _lw
 #define _lw ref(comma)
+
+/**
+ * スタックの文字を定義中のワードに追加する。
+ * ( c -- )
+ */
+native2("c,", comma_c)
+{
+    char c;
+    c = (char)pop();
+    here->value = c;
+    here++;
+    next();
+}
+#undef _lw
+#define _lw ref(comma_c)
 
 /**
  * メインワード。
