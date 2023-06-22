@@ -21,7 +21,6 @@ void print_char(char c)
 size_t read_str(char *buf)
 {
 #if defined(LOCAL)
-    size_t length;
     if (!scanf("%s", buf))
         return 0;
     return strlen(buf);
