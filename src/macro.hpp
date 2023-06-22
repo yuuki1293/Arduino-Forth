@@ -50,6 +50,6 @@
         next();                  \
     }
 
-#define const1(label, type) const2(label, type, label);
+#define const1(label, type) const2(label, type, label)
 
 #endif // MACRO_HPP
