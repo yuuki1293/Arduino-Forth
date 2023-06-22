@@ -66,6 +66,9 @@ native1(init)
 #undef _lw
 #define _lw ref(init)
 
+/**
+ * 全てのコロンワードの始まり。
+ */
 native1(docol)
 {
     rpush(pc);
