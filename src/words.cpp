@@ -254,6 +254,17 @@ native2(".s", show_stack)
 }
 
 /**
+ * 次の命令の数値をスタックヘプッシュする
+ * ( -- a )
+ */
+native1(lit)
+{
+    push(pc->value);
+    pc++;
+    next();
+}
+
+/**
  * メインワード。
  */
 colon1(main_stub){
