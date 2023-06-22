@@ -98,5 +98,7 @@ dkms.conf
 
 # Ignore arduino-cli
 /bin/arduino-cli
+/bin/arduino-cli.exe
+/bin/LICENSE.*
 
 local
