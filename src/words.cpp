@@ -252,6 +252,18 @@ native1(count)
 }
 
 /**
+ * スタックの数をプリントする。
+ * ( nu -- )
+ */
+native2(".", dot)
+{
+    intptr_t x;
+    x = pop();
+    print_int(x);
+    next();
+}
+
+/**
  * スタックの数を全てプリントする。スタックは消費されない。
  */
 native2(".s", show_stack)
