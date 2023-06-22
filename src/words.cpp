@@ -15,6 +15,11 @@ static void push(int32_t value)
     return;
 }
 
+/**
+ * @brief スタックから値をポップする。
+ * 
+ * @return int32_t 値
+ */
 static int32_t pop()
 {
     int32_t value = *stack;
