@@ -43,12 +43,17 @@
 
 #define colon1(label) colon2(#label, label)
 
-#define const2(label, var)   \
-    native1(label)           \
-    {                        \
-        push((intptr_t)var); \
-        next();              \
-    }
+#define const2(label, var)                      \
+    [[noreturn]] void i_##label()               \
+    {                                           \
+        push((intptr_t)var);                    \
+        next();                                 \
+    }                                           \
+    body a_##label[] = {{.impl_p = i_##label}}; \
+    forth_word w_##label = {_lw,                \
+                            #label,             \
+                            0,                  \
+                            a_##label}
 
 #define const1(label, type) const2(label, label)
 
