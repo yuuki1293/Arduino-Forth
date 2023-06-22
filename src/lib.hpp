@@ -14,6 +14,6 @@ void print_int(intptr_t num);
 
 void print_char(char c);
 
-size_t read_str(char* buf);
+size_t read_str(char *buf);
 
 #endif // LIB_HPP
