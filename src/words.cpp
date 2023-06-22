@@ -584,6 +584,21 @@ native2("@", fetch)
 #define _lw ref(fetch)
 
 /**
+ * スタックの1番目の値を2番目のアドレスに書き込む。
+ * ( addr data -- )
+ */
+native2("!", write)
+{
+    intptr_t x, *p;
+    x = pop();
+    p = (intptr_t *)pop();
+    *p = x;
+    next();
+}
+#undef _lw
+#define _lw ref(write)
+
+/**
  * メインワード。
  */
 colon1(main_stub){
