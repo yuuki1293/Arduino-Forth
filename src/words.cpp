@@ -95,6 +95,9 @@ native1(exit)
  */
 native1(bye)
 {
+#if !defined(LOCAL)
+    Serial.flush();
+#endif
     exit(0);
 }
 #undef _lw
