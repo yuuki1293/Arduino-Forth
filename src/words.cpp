@@ -3,6 +3,11 @@
 extern word w_main_stub;
 static body program_stub = {.inner = w_main_stub.xt};
 
+/**
+ * @brief スタックに値をプッシュする。
+ * 
+ * @param value 値
+ */
 static void push(int32_t value)
 {
     stack++;
