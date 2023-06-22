@@ -546,6 +546,18 @@ native1(state)
 #define _lw ref(state)
 
 /**
+ * 辞書メモリの空き先頭アドレスをスタックにプッシュする。
+ * ( -- addr )
+ */
+native1(here)
+{
+    push((intptr_t)here);
+    next();
+}
+#undef _lw
+#define _lw ref(here)
+
+/**
  * メインワード。
  */
 colon1(main_stub){
