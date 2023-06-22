@@ -2,8 +2,6 @@
 #define MAIN_HPP
 
 #include <Arduino.h>
-
-void setup();
-void loop();
+#include "words.hpp"
 
 #endif //MAIN_HPP
