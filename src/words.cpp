@@ -643,6 +643,30 @@ native2("c,", comma_c)
 #define _lw ref(comma_c)
 
 /**
+ * 辞書に新しい名前を持つエントリを作成する。
+ * ( flags name -- )
+ */
+native1(create)
+{
+    char *name;
+    bool flag;
+    forth_word *new_word;
+    name = (char *)pop();
+    flag = (bool)pop();
+
+    new_word = (forth_word *)malloc(sizeof(forth_word));
+    new_word->next = last_word;
+    last_word = new_word;
+    new_word->name = name;
+    new_word->flag = flag;
+    new_word->xt = here;
+
+    next();
+}
+#undef _lw
+#define _lw ref(create)
+
+/**
  * メインワード。
  */
 colon1(main_stub){
