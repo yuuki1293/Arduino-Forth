@@ -12,6 +12,8 @@
 
 [[noreturn]] void i_exit();
 
+[[noreturn]] void i_bye();
+
 [[noreturn]] void i_drop();
 
 [[noreturn]] void i_swap();
