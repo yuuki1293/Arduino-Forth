@@ -12,4 +12,6 @@
 
 void print_int(intptr_t num);
 
+void print_char(char c);
+
 #endif // LIB_HPP

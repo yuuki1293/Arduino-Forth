@@ -8,3 +8,12 @@ void print_int(intptr_t num)
     Serial.println(num);
 #endif
 }
+
+void print_char(char c)
+{
+#if defined(LOCAL)
+    putchar(c);
+#else
+    Serial.println(c);
+#endif
+}
