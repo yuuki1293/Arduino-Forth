@@ -18,10 +18,13 @@ void print_char(char c)
 #endif
 }
 
-void read_str(char *buf)
+size_t read_str(char *buf)
 {
 #if defined(LOCAL)
-    scanf("%s", buf);
+    size_t length;
+    if (!scanf("%s", buf))
+        return 0;
+    return strlen(buf);
 #else
     size_t i = 0;
     char input = 1;
@@ -34,12 +37,11 @@ void read_str(char *buf)
 
         if (input == ' ' || input == '\n' || input == '\t' || input == '\0')
         {
-            buf[i] = '\0';
-            return;
+            break;
         }
     }
 
     buf[i] = '\0';
+    return i;
 #endif
-    return;
 }
