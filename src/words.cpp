@@ -128,6 +128,9 @@ native1(swap)
 #undef _lw
 #define _lw ref(swap)
 
+/**
+ * メインワード。
+ */
 colon1(main_stub){
     impl(docol),
     xt(bye)};
