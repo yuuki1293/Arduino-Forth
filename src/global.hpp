@@ -11,13 +11,13 @@
 #define FORTH_USER_MEM 256
 #define FORTH_DICT_MEM 64
 
-extern body *pc;
-extern body *w;
+extern const body *pc;
+extern const body *w;
 extern intptr_t *stack;
-extern body **rstack;
+extern const body **rstack;
 
 extern intptr_t stack_start[FORTH_STACK_SIZE];
-extern body *rstack_start[FORTH_RSTACK_SIZE];
+extern const body *rstack_start[FORTH_RSTACK_SIZE];
 extern char input_buf[FORTH_INPUT_BUF];
 extern intptr_t user_mem[FORTH_USER_MEM];
 extern body dict_mem[FORTH_DICT_MEM];

@@ -13,7 +13,7 @@
 #include "macro.hpp"
 #include "next.hpp"
 
-extern forth_word *last_word;
+extern const forth_word *last_word;
 
 [[noreturn]] void forth_init();
 

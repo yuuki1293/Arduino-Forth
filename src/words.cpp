@@ -1,7 +1,7 @@
 #include "words.hpp"
 
-extern forth_word w_main_stub;
-static body program_stub = {.inner = w_main_stub.xt};
+extern const forth_word w_main_stub;
+static const body program_stub = {.inner = w_main_stub.xt};
 
 /**
  * @brief スタックに値をプッシュする。
@@ -32,7 +32,7 @@ static intptr_t pop()
  *
  * @param body アドレス
  */
-static void rpush(body *body)
+static void rpush(const body *body)
 {
     rstack++;
     *rstack = body;
@@ -44,9 +44,9 @@ static void rpush(body *body)
  *
  * @return body* アドレス
  */
-static body *rpop()
+static const body *rpop()
 {
-    body *body = *rstack;
+    const body *body = *rstack;
     rstack--;
     return body;
 }
@@ -59,7 +59,7 @@ native1(init)
     stack = stack_start;
     rstack = rstack_start;
     pc = &program_stub;
-    state = 0;
+    state = forth_state::INTERPRETER;
     here = dict_mem;
     next();
 }
@@ -317,7 +317,7 @@ native2(">r", push_r)
  */
 native2("r>", pop_r)
 {
-    body *x;
+    const body *x;
     x = rpop();
     push((intptr_t)x);
     next();
@@ -345,7 +345,7 @@ native2("r@", fetch_r)
 native1(find)
 {
     char *x;
-    forth_word *word_p;
+    const forth_word *word_p;
 
     x = (char *)pop();
     word_p = last_word;
@@ -666,21 +666,28 @@ colon3(";", semicolon, 1){
     xt(lit), xt(exit), xt(comma),
     xt(state), lit(0), xt(write),
     xt(exit)};
+#undef _lw
+#define _lw ref(semicolon)
+
+colon1(interpreter){
+    docol_impl,
+    xt(inbuf), xt(word),
+    xt(exit)};
+#undef _lw
+#define _lw ref(interpreter)
 
 /**
  * メインワード。
  */
 colon1(main_stub){
     docol_impl,
-    lit(1), lit(2),
-    xt(show_stack),
-    xt(plus),
-    xt(show_stack),
+    xt(inbuf), xt(word),
+    xt(inbuf), xt(prints),
     xt(bye)};
 #undef _lw
 #define _lw ref(main_stub)
 
-forth_word *last_word = _lw;
+const forth_word *last_word = _lw;
 
 /**
  * @brief 最初に呼び出されるワードを呼び出す。

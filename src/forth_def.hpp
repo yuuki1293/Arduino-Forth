@@ -5,17 +5,17 @@
 
 union body
 {
-    body *inner;
+    const body *inner;
     size_t value;
     void (*impl_p)() __attribute__((noreturn));
 };
 
 struct forth_word
 {
-    struct forth_word *next;
+    const struct forth_word *next;
     const char *name;
     bool flag;
-    body *xt;
+    const body *xt;
 };
 
 enum class forth_state : intptr_t

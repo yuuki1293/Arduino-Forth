@@ -1,12 +1,12 @@
 #include "global.hpp"
 
-body *pc;
-body *w;
+const body *pc;
+const body *w;
 intptr_t *stack;
-body **rstack;
+const body **rstack;
 
 intptr_t stack_start[FORTH_STACK_SIZE];
-body *rstack_start[FORTH_RSTACK_SIZE];
+const body *rstack_start[FORTH_RSTACK_SIZE];
 char input_buf[FORTH_INPUT_BUF];
 intptr_t user_mem[FORTH_USER_MEM];
 body dict_mem[FORTH_DICT_MEM];
