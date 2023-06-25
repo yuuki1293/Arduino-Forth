@@ -18,4 +18,10 @@ struct forth_word
     body *xt;
 };
 
+enum class forth_state : intptr_t
+{
+    INTERPRETER,
+    COMPILER
+};
+
 #endif // FORTH_DEF_HPP
