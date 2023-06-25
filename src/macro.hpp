@@ -18,6 +18,18 @@
         .value = a \
     }
 
+#define branch(n)      \
+    xt(branch),        \
+    {                  \
+        .value = n - 2 \
+    }
+
+#define branch0(n)     \
+    xt(branch0),       \
+    {                  \
+        .value = n - 2 \
+    }
+
 #define native3(name, label, flag)                    \
     [[noreturn]] void i_##label();                    \
     const body a_##label[] = {{.impl_p = i_##label}}; \
