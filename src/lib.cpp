@@ -52,7 +52,7 @@ size_t read_str(char *buf)
 void print_str(const char *cp)
 {
 #if defined(LOCAL)
-    printf("%s", cp);
+    printf("%s\n", cp);
 #else
     Serial.println(cp);
 #endif
