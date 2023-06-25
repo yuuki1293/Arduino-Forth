@@ -1,7 +1,7 @@
 AC = arduino-cli
 AFLAGS = --fqbn
 BOARD = arduino:avr:uno
-PORT = /dev/ttyUSB0
+PORT = COM8
 CC = g++
 LD = g++
 CFLAGS = -pedantic-errors -Wall -Werror -Wextra -ggdb -std=c++2a
