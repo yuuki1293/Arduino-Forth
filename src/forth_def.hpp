@@ -6,7 +6,7 @@
 union body
 {
     const body *inner;
-    size_t value;
+    intptr_t value;
     void (*impl_p)() __attribute__((noreturn));
 };
 
