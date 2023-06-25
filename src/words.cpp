@@ -1,7 +1,7 @@
 #include "words.hpp"
 
-extern const forth_word w_interpreter;
-static const body program_stub = {.inner = w_interpreter.xt};
+extern const forth_word w_main_stub;
+static const body program_stub = {.inner = w_main_stub.xt};
 
 /**
  * @brief スタックに値をプッシュする。
@@ -676,7 +676,7 @@ colon3(";", semicolon, 1){
 /**
  * コンパイラ&インタープリター
 */
-colon1(interpreter){
+colon1(main_stub){
     docol_impl,
     /* start 24 */
     // 4
@@ -762,16 +762,15 @@ colon1(interpreter){
     xt(execute),
     branch(-71 /* start */),
 
-    /* i_num 8 */
-    // 6
-    xt(drop),
+    /* i_num 7 */
+    // 5
     xt(drop),
     xt(inbuf),
     xt(number),
     branch0(2 /* not found */),
 
     // 2
-    branch(-79 /* start */),
+    branch(-78 /* start */),
 
     /* not found 6 */
     // 6
@@ -779,24 +778,12 @@ colon1(interpreter){
     xt(lit),
     {.value = (intptr_t) "no such word."},
     xt(prints),
-    branch(-85 /* start */),
+    branch(-84 /* start */),
 
     /* exit 2*/
     // 2
     xt(bye),
     xt(exit)};
-#undef _lw
-#define _lw ref(interpreter)
-
-/**
- * メインワード。
- */
-colon1(main_stub){
-    docol_impl,
-    xt(inbuf), xt(word),
-    xt(inbuf), xt(prints),
-    branch(-6),
-    xt(bye)};
 #undef _lw
 #define _lw ref(main_stub)
 
