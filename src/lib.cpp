@@ -26,10 +26,14 @@ size_t read_str(char *buf)
     return strlen(buf);
 #else
     size_t i = 0;
-    char input = 1;
+    char input;
 
-    while (Serial.available())
+    while (true)
     {
+        while (!Serial.available())
+        {
+        }
+
         input = (char)Serial.read();
         buf[i] = input;
         i++;
