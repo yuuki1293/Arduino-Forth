@@ -1,7 +1,7 @@
 #include "words.hpp"
 
-extern const forth_word w_main_stub;
-static const body program_stub = {.inner = w_main_stub.xt};
+extern const forth_word w_interpreter;
+static const body program_stub = {.inner = w_interpreter.xt};
 
 /**
  * @brief スタックに値をプッシュする。
@@ -351,9 +351,9 @@ native1(find)
     x = (char *)pop();
     word_p = last_word;
 
-    while (!word_p)
+    while (word_p)
     {
-        if (strcmp(x, word_p->name))
+        if (!strcmp(x, word_p->name))
         {
             push((intptr_t)word_p);
             next();
@@ -527,7 +527,7 @@ const1(last_word);
  * stateをスタックにプッシュする。
  * ( -- addr )
  */
-const1(state);
+const2(state, &state);
 #undef _lw
 #define _lw ref(state)
 
@@ -662,6 +662,9 @@ colon2(":", colon){
 #undef _lw
 #define _lw ref(colon)
 
+/**
+ * ワードの定義を終わる。
+*/
 colon3(";", semicolon, 1){
     docol_impl,
     xt(lit), xt(exit), xt(comma),
@@ -670,9 +673,117 @@ colon3(";", semicolon, 1){
 #undef _lw
 #define _lw ref(semicolon)
 
+/**
+ * コンパイラ&インタープリター
+*/
 colon1(interpreter){
     docol_impl,
-    xt(inbuf), xt(word),
+    /* start 24 */
+    // 4
+    xt(inbuf),
+    xt(word),
+    branch0(81 /* exit */),
+
+    // 4
+    xt(state),
+    xt(fetch_c),
+    branch0(54 /* interpreter */),
+
+    // 5
+    xt(inbuf),
+    xt(find),
+    xt(dup),
+    branch0(14 /* c_num */),
+
+    // 8
+    xt(cfa),
+    xt(dup),
+    lit(1),
+    xt(minus),
+    xt(fetch_c),
+    branch0(3 /* comma */),
+
+    // 3
+    xt(execute),
+    branch(-24 /* read */),
+
+    /* comma 3 */
+    // 3
+    xt(comma),
+    branch(-27 /* read */),
+
+    /* c_num 35 */
+    // 6
+    xt(drop),
+    xt(drop),
+    xt(inbuf),
+    xt(number),
+    branch0(46 /* not found */),
+
+    // 12
+    xt(here),
+    xt(fetch),
+    lit(8),
+    xt(minus),
+    xt(fetch),
+    xt(lit),
+    xt(branch),
+    xt(eq),
+    xt(not ),
+    branch0(-21 /* comma */),
+
+    // 12
+    xt(here),
+    xt(fetch),
+    lit(8),
+    xt(minus),
+    xt(fetch),
+    xt(lit),
+    xt(branch),
+    xt(eq),
+    xt(not ),
+    branch0(-33 /* comma */),
+
+    // 5
+    xt(lit),
+    xt(comma),
+    xt(comma),
+    branch(62 /* start */),
+
+    /* interpreter 9 */
+    // 5
+    xt(inbuf),
+    xt(find),
+    xt(dup),
+    branch0(4 /* i_num */),
+
+    // 4
+    xt(cfa),
+    xt(execute),
+    branch(-71 /* start */),
+
+    /* i_num 8 */
+    // 6
+    xt(drop),
+    xt(drop),
+    xt(inbuf),
+    xt(number),
+    branch0(2 /* not found */),
+
+    // 2
+    branch(-79 /* start */),
+
+    /* not found 6 */
+    // 6
+    xt(drop),
+    xt(lit),
+    {.value = (intptr_t) "no such word."},
+    xt(prints),
+    branch(-85 /* start */),
+
+    /* exit 2*/
+    // 2
+    xt(bye),
     xt(exit)};
 #undef _lw
 #define _lw ref(interpreter)
@@ -684,6 +795,7 @@ colon1(main_stub){
     docol_impl,
     xt(inbuf), xt(word),
     xt(inbuf), xt(prints),
+    branch(-6),
     xt(bye)};
 #undef _lw
 #define _lw ref(main_stub)
