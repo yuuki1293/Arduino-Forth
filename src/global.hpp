@@ -5,10 +5,10 @@
 #include <stdint.h>
 #include "forth_def.hpp"
 
-#define FORTH_STACK_SIZE 256
-#define FORTH_RSTACK_SIZE 64
-#define FORTH_INPUT_BUF 256
-#define FORTH_USER_MEM 256
+#define FORTH_STACK_SIZE 64
+#define FORTH_RSTACK_SIZE 16
+#define FORTH_INPUT_BUF 100
+#define FORTH_USER_MEM 64
 #define FORTH_DICT_MEM 64
 
 extern const body *pc;
