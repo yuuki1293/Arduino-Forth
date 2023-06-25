@@ -2,7 +2,7 @@
 
 void setup() {
     Serial.begin(9600);
-    Serial.println("setup");
+    Serial.println(F("setup"));
     forth_init();
 }
 
