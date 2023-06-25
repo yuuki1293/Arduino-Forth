@@ -3,7 +3,7 @@
 void print_int(intptr_t num)
 {
 #if defined(LOCAL)
-    printf("%ld\n", num);
+    printf("%ld\n", (long)num);
 #else
     Serial.println(num);
 #endif
