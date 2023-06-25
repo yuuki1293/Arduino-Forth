@@ -22,7 +22,7 @@ extern char input_buf[FORTH_INPUT_BUF];
 extern intptr_t user_mem[FORTH_USER_MEM];
 extern body dict_mem[FORTH_DICT_MEM];
 
-extern intptr_t state;
+extern forth_state state;
 extern body *here;
 
 #endif // GLOBAL_HPP

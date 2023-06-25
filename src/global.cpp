@@ -11,5 +11,5 @@ char input_buf[FORTH_INPUT_BUF];
 intptr_t user_mem[FORTH_USER_MEM];
 body dict_mem[FORTH_DICT_MEM];
 
-intptr_t state = 0;
+forth_state state = forth_state::INTERPRETER;
 body *here = dict_mem;
