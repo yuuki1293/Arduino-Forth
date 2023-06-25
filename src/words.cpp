@@ -96,6 +96,7 @@ native1(exit)
  */
 native1(bye)
 {
+    print_str("bye.");
 #if !defined(LOCAL)
     Serial.flush();
 #endif
