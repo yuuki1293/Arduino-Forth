@@ -18,16 +18,16 @@
         .value = a \
     }
 
-#define branch(n)      \
-    xt(branch),        \
-    {                  \
-        .value = n - 2 \
+#define branch(n)  \
+    xt(branch),    \
+    {              \
+        .value = n \
     }
 
-#define branch0(n)     \
-    xt(branch0),       \
-    {                  \
-        .value = n - 2 \
+#define branch0(n) \
+    xt(branch0),   \
+    {              \
+        .value = n \
     }
 
 #define native3(name, label, flag)                    \
