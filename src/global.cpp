@@ -13,3 +13,31 @@ body dict_mem[FORTH_DICT_MEM];
 
 forth_state state = forth_state::INTERPRETER;
 body *here = dict_mem;
+
+void push(intptr_t value)
+{
+    stack++;
+    *stack = value;
+    return;
+}
+
+intptr_t pop()
+{
+    intptr_t value = *stack;
+    stack--;
+    return value;
+}
+
+void rpush(const body *body)
+{
+    rstack++;
+    *rstack = body;
+    return;
+}
+
+const body *rpop()
+{
+    const body *body = *rstack;
+    rstack--;
+    return body;
+}

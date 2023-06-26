@@ -27,4 +27,32 @@ extern body dict_mem[FORTH_DICT_MEM];
 extern forth_state state;
 extern body *here;
 
+/**
+ * @brief スタックに値をプッシュする。
+ *
+ * @param value 値
+ */
+void push(intptr_t value);
+
+/**
+ * @brief スタックから値をポップする。
+ *
+ * @return intptr_t 値
+ */
+intptr_t pop();
+
+/**
+ * @brief リターンスタックにアドレスをプッシュする。
+ *
+ * @param body アドレス
+ */
+void rpush(const body *body);
+
+/**
+ * @brief リターンスタックからアドレスをポップする。
+ *
+ * @return body* アドレス
+ */
+const body *rpop();
+
 #endif // GLOBAL_HPP

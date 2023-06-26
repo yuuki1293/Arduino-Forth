@@ -4,54 +4,6 @@ extern const forth_word w_main_stub;
 static const body program_stub = {.inner = w_main_stub.xt};
 
 /**
- * @brief スタックに値をプッシュする。
- *
- * @param value 値
- */
-static void push(intptr_t value)
-{
-    stack++;
-    *stack = value;
-    return;
-}
-
-/**
- * @brief スタックから値をポップする。
- *
- * @return intptr_t 値
- */
-static intptr_t pop()
-{
-    intptr_t value = *stack;
-    stack--;
-    return value;
-}
-
-/**
- * @brief リターンスタックにアドレスをプッシュする。
- *
- * @param body アドレス
- */
-static void rpush(const body *body)
-{
-    rstack++;
-    *rstack = body;
-    return;
-}
-
-/**
- * @brief リターンスタックからアドレスをポップする。
- *
- * @return body* アドレス
- */
-static const body *rpop()
-{
-    const body *body = *rstack;
-    rstack--;
-    return body;
-}
-
-/**
  * 最初に呼び出されるワード。
  */
 native1(init)
