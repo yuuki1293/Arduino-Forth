@@ -11,6 +11,8 @@
 #define FORTH_USER_MEM 64
 #define FORTH_DICT_MEM 64
 
+#define CELL_SIZE sizeof(intptr_t)
+
 extern const body *pc;
 extern const body *w;
 extern intptr_t *stack;
