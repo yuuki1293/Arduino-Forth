@@ -374,13 +374,27 @@ native1(find)
  */
 native1(cfa)
 {
-    forth_word *x;
-    x = (forth_word *)pop();
-    push((intptr_t)x->xt);
+    forth_word *fwp;
+    fwp = (forth_word *)pop();
+    push((intptr_t)fwp->xt);
     next();
 }
 #undef _lw
 #define _lw ref(cfa)
+
+/**
+ * ワードへのポインタから、フラグをプッシュする。
+ * ( addr -- flag )
+ */
+native1(flag)
+{
+    forth_word *fwp;
+    fwp = (forth_word *)pop();
+    push((intptr_t)fwp->flag);
+    next();
+}
+#undef _lw
+#define _lw ref(flag)
 
 /**
  * スタックの文字をプリントする。
@@ -535,7 +549,7 @@ const2(state, &state);
  * 辞書メモリの空き先頭アドレスをスタックにプッシュする。
  * ( -- addr )
  */
-const1(here);
+const2(here, &here);
 #undef _lw
 #define _lw ref(here)
 
@@ -630,7 +644,7 @@ native2("c,", comma_c)
  */
 native1(create)
 {
-    char *name;
+    char *name, *new_name;
     bool flag;
     forth_word *new_word;
     name = (char *)pop();
@@ -639,7 +653,9 @@ native1(create)
     new_word = (forth_word *)malloc(sizeof(forth_word));
     new_word->next = last_word;
     last_word = new_word;
-    new_word->name = name;
+    new_name = (char *)malloc(sizeof(char) * strlen(name));
+    strcpy(new_name, name);
+    new_word->name = new_name;
     new_word->flag = flag;
     new_word->xt = here;
 
@@ -664,7 +680,7 @@ colon2(":", colon){
 
 /**
  * ワードの定義を終わる。
-*/
+ */
 colon3(";", semicolon, 1){
     docol_impl,
     xt(lit), xt(exit), xt(comma),
@@ -675,80 +691,78 @@ colon3(";", semicolon, 1){
 
 /**
  * コンパイラ&インタープリター
-*/
+ */
 colon1(main_stub){
     docol_impl,
-    /* start 24 */
+    /* start 22 */
     // 4
     xt(inbuf),
     xt(word),
-    branch0(81 /* exit */),
+    branch0(78 /* exit */),
 
     // 4
     xt(state),
     xt(fetch_c),
-    branch0(54 /* interpreter */),
+    branch0(51 /* interpreter */),
 
     // 5
     xt(inbuf),
     xt(find),
     xt(dup),
-    branch0(14 /* c_num */),
+    branch0(12 /* c_num */),
 
-    // 8
-    xt(cfa),
+    // 6
     xt(dup),
-    lit(1),
-    xt(minus),
-    xt(fetch_c),
+    xt(cfa),
+    xt(swap),
+    xt(flag),
     branch0(3 /* comma */),
 
     // 3
     xt(execute),
-    branch(-24 /* read */),
+    branch(-22 /* start */),
 
     /* comma 3 */
     // 3
     xt(comma),
-    branch(-27 /* read */),
+    branch(-25 /* start */),
 
-    /* c_num 35 */
-    // 6
-    xt(drop),
+    /* c_num 34 */
+    // 5
     xt(drop),
     xt(inbuf),
     xt(number),
     branch0(46 /* not found */),
 
     // 12
+    lit(CELL_SIZE),
     xt(here),
     xt(fetch),
-    lit(8),
     xt(minus),
     xt(fetch),
     xt(lit),
     xt(branch),
     xt(eq),
     xt(not ),
-    branch0(-21 /* comma */),
+    branch0(-20 /* comma */),
 
     // 12
+    lit(CELL_SIZE),
     xt(here),
     xt(fetch),
-    lit(8),
     xt(minus),
     xt(fetch),
     xt(lit),
-    xt(branch),
+    xt(branch0),
     xt(eq),
     xt(not ),
-    branch0(-33 /* comma */),
+    branch0(-32 /* comma */),
 
     // 5
     xt(lit),
+    xt(lit),
     xt(comma),
-    xt(comma),
-    branch(62 /* start */),
+    branch(-37 /* comma */),
 
     /* interpreter 9 */
     // 5
@@ -760,7 +774,7 @@ colon1(main_stub){
     // 4
     xt(cfa),
     xt(execute),
-    branch(-71 /* start */),
+    branch(-68 /* start */),
 
     /* i_num 7 */
     // 5
@@ -770,7 +784,7 @@ colon1(main_stub){
     branch0(2 /* not found */),
 
     // 2
-    branch(-78 /* start */),
+    branch(-75 /* start */),
 
     /* not found 6 */
     // 6
@@ -778,7 +792,7 @@ colon1(main_stub){
     xt(lit),
     {.value = (intptr_t) "no such word."},
     xt(prints),
-    branch(-84 /* start */),
+    branch(-81 /* start */),
 
     /* exit 2*/
     // 2
