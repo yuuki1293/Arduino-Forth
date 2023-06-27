@@ -759,7 +759,7 @@ colon1(main_stub){
  * ピンモードを設定する。
  * ( mode pin -- )
 */
-native1(pinmode){
+native1(pinMode){
     int8_t pin, mode;
     pin = pop();
     mode = pop();
@@ -767,7 +767,21 @@ native1(pinmode){
     next();
 }
 #undef _lw
-#define _lw ref(pin_mode)
+#define _lw ref(pinMode)
+
+/**
+ * HIGH(1)またはLOW(0)を、指定したピンに出力する。
+ * ( val pin -- )
+*/
+native1(digitalWrite){
+    int8_t pin, val;
+    pin = pop();
+    val = pop();
+    digitalWrite(pin, val);
+    next();
+}
+#undef _lw
+#define _lw ref(digitalWrite)
 
 #endif
 
