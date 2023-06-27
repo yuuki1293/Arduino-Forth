@@ -802,6 +802,7 @@ native1(digitalRead)
 
 /**
  * スタックの時間(ms)だけプログラムの実行を止める。
+ * ( ms -- )
  */
 native1(delay)
 {
