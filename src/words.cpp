@@ -753,6 +753,23 @@ colon1(main_stub){
 #undef _lw
 #define _lw ref(main_stub)
 
+#if !defined(LOCAL)
+
+/**
+ * ピンモードを設定する。
+ * ( mode pin -- )
+*/
+native1(pinmode){
+    int8_t pin, mode;
+    pin = pop();
+    mode = pop();
+    pinMode(pin, mode);
+    next();
+}
+#undef _lw
+#define _lw ref(pin_mode)
+#endif
+
 const forth_word *last_word = _lw;
 
 /**
