@@ -758,8 +758,9 @@ colon1(main_stub){
 /**
  * ピンモードを設定する。
  * ( mode pin -- )
-*/
-native1(pinMode){
+ */
+native1(pinMode)
+{
     int8_t pin, mode;
     pin = pop();
     mode = pop();
@@ -772,8 +773,9 @@ native1(pinMode){
 /**
  * HIGH(1)またはLOW(0)を、指定したピンに出力する。
  * ( val pin -- )
-*/
-native1(digitalWrite){
+ */
+native1(digitalWrite)
+{
     int8_t pin, val;
     pin = pop();
     val = pop();
@@ -782,6 +784,21 @@ native1(digitalWrite){
 }
 #undef _lw
 #define _lw ref(digitalWrite)
+
+/**
+ * 指定したピンの値をHIGH(1)かLOW(0)で読み取る。
+ * ( pin -- val )
+ */
+native1(digitalRead)
+{
+    int8_t pin, val;
+    pin = pop();
+    val = digitalRead(pin);
+    push(val);
+    next();
+}
+#undef _lw
+#define _lw ref(digitalRead)
 
 #endif
 
