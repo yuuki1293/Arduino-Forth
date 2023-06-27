@@ -305,7 +305,7 @@ native1(find)
 
     while (word_p)
     {
-        if (!strcmp(x, word_p->name))
+        if (!strcasecmp(x, word_p->name))
         {
             push((intptr_t)word_p);
             next();
@@ -768,6 +768,7 @@ native1(pinmode){
 }
 #undef _lw
 #define _lw ref(pin_mode)
+
 #endif
 
 const forth_word *last_word = _lw;
