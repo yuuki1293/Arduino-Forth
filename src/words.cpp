@@ -800,6 +800,19 @@ native1(digitalRead)
 #undef _lw
 #define _lw ref(digitalRead)
 
+/**
+ * スタックの時間(ms)だけプログラムの実行を止める。
+*/
+native1(delay)
+{
+    unsigned long ms;
+    ms = pop();
+    delay(ms);
+    next();
+}
+#undef _lw
+#define _lw ref(delay)
+
 #endif
 
 const forth_word *last_word = _lw;
