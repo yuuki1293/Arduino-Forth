@@ -36,12 +36,15 @@ size_t read_str(char *buf)
 
         input = (char)Serial.read();
         buf[i] = input;
-        i++;
+
+        Serial.print(input);
 
         if (isspace(input))
         {
             break;
         }
+
+        i++;
     }
 
     buf[i] = '\0';
