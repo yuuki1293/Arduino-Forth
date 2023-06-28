@@ -47,6 +47,8 @@ size_t read_str(char *buf)
         i++;
     }
 
+    Serial.println();
+
     buf[i] = '\0';
     return i;
 #endif
