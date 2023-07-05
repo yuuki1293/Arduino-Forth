@@ -13,7 +13,7 @@ native1(init)
     pc = &program_stub;
     state = forth_state::INTERPRETER;
     here = dict_mem;
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(init)
@@ -26,7 +26,7 @@ native1(docol)
     rpush(pc);
     w++;
     pc = w;
-    next();
+    return;
 }
 #define docol_impl impl(docol)
 #undef _lw
@@ -38,7 +38,7 @@ native1(docol)
 native1(exit)
 {
     pc = rpop();
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(exit)
@@ -64,7 +64,7 @@ native1(bye)
 native1(drop)
 {
     stack--;
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(drop)
@@ -80,7 +80,7 @@ native1(swap)
     b = pop();
     push(a);
     push(b);
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(swap)
@@ -95,7 +95,7 @@ native1(dup)
     a = pop();
     push(a);
     push(a);
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(dup)
@@ -113,7 +113,7 @@ native1(rot)
     push(x2);
     push(x1);
     push(x3);
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(rot)
@@ -128,7 +128,7 @@ native2("+", plus)
     x1 = pop();
     x2 = pop();
     push(x1 + x2);
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(plus)
@@ -143,7 +143,7 @@ native2("-", minus)
     x1 = pop();
     x2 = pop();
     push(x1 - x2);
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(minus)
@@ -158,7 +158,7 @@ native2("*", mul)
     x1 = pop();
     x2 = pop();
     push(x1 * x2);
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(mul)
@@ -173,7 +173,7 @@ native2("/", div)
     x1 = pop();
     x2 = pop();
     push(x1 / x2);
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(div)
@@ -187,7 +187,7 @@ native1(not )
     intptr_t x;
     x = pop();
     push(!x);
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(not )
@@ -202,7 +202,7 @@ native2("=", eq)
     x1 = pop();
     x2 = pop();
     push(x1 == x2);
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(eq)
@@ -216,7 +216,7 @@ native1(count)
     char *cp;
     cp = (char *)pop();
     push(strlen(cp));
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(count)
@@ -230,7 +230,7 @@ native2(".", dot)
     intptr_t x;
     x = pop();
     print_int(x);
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(dot)
@@ -245,7 +245,7 @@ native2(".s", show_stack)
         print_int(*i);
     }
 
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(show_stack)
@@ -259,7 +259,7 @@ native2(">r", push_r)
     body *x;
     x = (body *)pop();
     rpush(x);
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(push_r)
@@ -273,7 +273,7 @@ native2("r>", pop_r)
     const body *x;
     x = rpop();
     push((intptr_t)x);
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(pop_r)
@@ -285,7 +285,7 @@ native2("r>", pop_r)
 native2("r@", fetch_r)
 {
     push((intptr_t)*rstack);
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(fetch_r)
@@ -308,14 +308,14 @@ native1(find)
         if (!strcasecmp(x, word_p->name))
         {
             push((intptr_t)word_p);
-            next();
+            return;
         }
 
         word_p = word_p->next;
     }
 
     push(0);
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(find)
@@ -329,7 +329,7 @@ native1(cfa)
     forth_word *fwp;
     fwp = (forth_word *)pop();
     push((intptr_t)fwp->xt);
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(cfa)
@@ -343,7 +343,7 @@ native1(flag)
     forth_word *fwp;
     fwp = (forth_word *)pop();
     push((intptr_t)fwp->flag);
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(flag)
@@ -357,7 +357,7 @@ native1(emit)
     char c;
     c = (char)pop();
     print_char(c);
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(emit)
@@ -374,7 +374,7 @@ native1(word)
     buf = (char *)pop();
     len = read_str(buf);
     push(len);
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(word)
@@ -401,7 +401,7 @@ native1(number)
 
     push(num);
     push(leng);
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(number)
@@ -415,7 +415,7 @@ native1(prints)
     char *cp;
     cp = (char *)pop();
     print_str(cp);
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(prints)
@@ -428,7 +428,7 @@ native1(branch)
 {
     pc += pc->value;
     pc++;
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(branch)
@@ -447,7 +447,7 @@ native2("0branch", branch0)
         pc += pc->value;
     pc++;
 
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(branch0)
@@ -460,7 +460,7 @@ native1(lit)
 {
     push(pc->value);
     pc++;
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(lit)
@@ -513,6 +513,7 @@ native1(execute)
 {
     w = (body *)pop();
     w->impl_p();
+    return;
 }
 #undef _lw
 #define _lw ref(execute)
@@ -526,7 +527,7 @@ native2("@", fetch)
     intptr_t *x;
     x = (intptr_t *)pop();
     push(*x);
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(fetch)
@@ -541,7 +542,7 @@ native2("!", write)
     x = pop();
     p = (intptr_t *)pop();
     *p = x;
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(write)
@@ -555,7 +556,7 @@ native2("@c", fetch_c)
     char *cp;
     cp = (char *)pop();
     push(*cp);
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(fetch_c)
@@ -570,7 +571,7 @@ native2(",", comma)
     xt = (body *)pop();
     here->inner = xt;
     here++;
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(comma)
@@ -585,7 +586,7 @@ native2("c,", comma_c)
     c = (char)pop();
     here->value = c;
     here++;
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(comma_c)
@@ -611,7 +612,7 @@ native1(create)
     new_word->flag = flag;
     new_word->xt = here;
 
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(create)
@@ -765,7 +766,7 @@ native1(pinMode)
     pin = pop();
     mode = pop();
     pinMode(pin, mode);
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(pinMode)
@@ -780,7 +781,7 @@ native1(digitalWrite)
     pin = pop();
     val = pop();
     digitalWrite(pin, val);
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(digitalWrite)
@@ -795,7 +796,7 @@ native1(digitalRead)
     pin = pop();
     val = digitalRead(pin);
     push(val);
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(digitalRead)
@@ -809,7 +810,7 @@ native1(delay)
     unsigned long ms;
     ms = pop();
     delay(ms);
-    next();
+    return;
 }
 #undef _lw
 #define _lw ref(delay)
@@ -824,4 +825,5 @@ const forth_word *last_word = _lw;
 [[noreturn]] void forth_init()
 {
     i_init();
+    next();
 }

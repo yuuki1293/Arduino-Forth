@@ -31,13 +31,13 @@
     }
 
 #define native3(name, label, flag)                    \
-    [[noreturn]] void i_##label();                    \
+    void i_##label();                                 \
     const body a_##label[] = {{.impl_p = i_##label}}; \
     const forth_word w_##label = {_lw,                \
                                   name,               \
                                   flag,               \
                                   a_##label};         \
-    [[noreturn]] void i_##label()
+    void i_##label()
 
 #define native2(name, label) native3(name, label, 0)
 
@@ -56,10 +56,10 @@
 #define colon1(label) colon2(#label, label)
 
 #define const2(label, var)                            \
-    [[noreturn]] void i_##label()                     \
+    void i_##label()                                  \
     {                                                 \
         push((intptr_t)var);                          \
-        next();                                       \
+        return;                                       \
     }                                                 \
     const body a_##label[] = {{.impl_p = i_##label}}; \
     const forth_word w_##label = {_lw,                \

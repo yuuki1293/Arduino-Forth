@@ -7,7 +7,7 @@ union body
 {
     const body *inner;
     intptr_t value;
-    void (*impl_p)() __attribute__((noreturn));
+    void (*impl_p)();
 };
 
 struct forth_word

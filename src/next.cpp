@@ -2,7 +2,10 @@
 
 [[noreturn]] void next()
 {
-    w = pc->inner;
-    pc++;
-    w->impl_p();
+    while (true)
+    {
+        w = pc->inner;
+        pc++;
+        w->impl_p();
+    }
 }
