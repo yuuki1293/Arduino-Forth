@@ -4,7 +4,7 @@ BOARD = arduino:avr:uno
 PORT = COM8
 CC = g++
 LD = g++
-CFLAGS = -pedantic-errors -Wall -Werror -Wextra -ggdb -std=c++2a
+CFLAGS = -pedantic-errors -Wall -Werror -Wextra -ggdb -g3 -std=c++2a
 OBJDIR = obj
 MODULES = src
 
