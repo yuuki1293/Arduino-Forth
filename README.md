@@ -3,13 +3,8 @@ ArduinoでForthマシンを動かす。
 
 ## セットアップ
 arduino-cliがインストールされていない場合、以下のコマンドでインストール。  
-(Windows・Linux)
 ```shell
 ./setup-arduino-cli
-```
-(Mac)
-```zsh
-brew install arduino-cli
 ```
 コンフィグを初期化。
 ```shell
