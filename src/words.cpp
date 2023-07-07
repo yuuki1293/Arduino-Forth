@@ -606,7 +606,7 @@ native1(create)
     new_word = (forth_word *)malloc(sizeof(forth_word));
     new_word->next = last_word;
     last_word = new_word;
-    new_name = (char *)malloc(sizeof(char) * strlen(name));
+    new_name = (char *)malloc(sizeof(char) * strlen(name) + 1);
     strcpy(new_name, name);
     new_word->name = new_name;
     new_word->flag = flag;
