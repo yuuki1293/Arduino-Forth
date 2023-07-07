@@ -1,0 +1,15 @@
+1 2 pinmode
+: on 1 2 digitalwrite ;
+: off 0 2 digitalwrite ;
+:
+loop
+on
+1000
+delay
+off
+1000
+delay
+branch
+-10
+;
+loop
